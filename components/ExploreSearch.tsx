@@ -27,7 +27,7 @@ const ExploreSearch = ({text, setText, favorite, setFavorite}: Props) => {
   const focusSearchBar = () => searchBarRef.current && searchBarRef.current.focus();
 
   return (
-    <div className="mx-auto md:w-[550px] mt-16 mb-20 shadow dark:shadow-none">
+    <div className="mx-auto md:w-[550px] mt-16 mb-20 shadow-md dark:shadow-none">
       <div className="relative w-full group">
         <AiOutlineSearch size={24}
                          className="top-1/2 left-4 absolute transform -translate-y-1/2 text-zinc-600 dark:text-zinc-400"/>
