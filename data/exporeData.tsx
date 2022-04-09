@@ -12,7 +12,7 @@ export const exploreData = [
   {
     id: '1',
     title: 'Army Email',
-    icon: <AiOutlineMail {...iconProps} />,
+    icon: <AiOutlineMail className={iconProps.className} size={iconProps.size} />,
     cac: true,
     href: 'https://webmail.apps.mil/mail',
     description: 'Test 5 description',
@@ -20,7 +20,7 @@ export const exploreData = [
   {
     id: '2',
     title: 'MyPay',
-    icon: <MdAttachMoney {...iconProps} />,
+    icon: <MdAttachMoney className={iconProps.className} size={iconProps.size} />,
     cac: false,
     href: 'https://mypay.dfas.mil/#/',
     description: 'Test 6 description',
@@ -29,7 +29,7 @@ export const exploreData = [
   {
     id: '3',
     title: 'MedPros',
-    icon: <GiHealthNormal {...iconProps} />,
+    icon: <GiHealthNormal className={iconProps.className} size={iconProps.size} />,
     cac: true,
     href: 'https://medpros.mods.army.mil/portal',
     description: 'Test 6 description',
@@ -38,7 +38,7 @@ export const exploreData = [
   {
     id: '4',
     title: 'My Clothing Record',
-    icon: <GiClothes {...iconProps} />,
+    icon: <GiClothes className={iconProps.className} size={iconProps.size} />,
     cac: true,
     href: 'https://ism.army.mil/ism/SelfServiceServlet?nav.nav_id=ssMyClothing',
     description: 'Test 6 description',
@@ -47,7 +47,7 @@ export const exploreData = [
   {
     id: '5',
     title: 'TRICARE',
-    icon: <GiHealthNormal {...iconProps} />,
+    icon: <GiHealthNormal className={iconProps.className} size={iconProps.size} />,
     cac: false,
     href: 'https://tricare.mil/',
     description: 'Test 6 description',
@@ -56,7 +56,7 @@ export const exploreData = [
   {
     id: '6',
     title: 'Army Career Tracker (ACT)',
-    icon: <BsFillBriefcaseFill {...iconProps} />,
+    icon: <BsFillBriefcaseFill className={iconProps.className} size={iconProps.size} />,
     cac: true,
     href: 'https://actnow.army.mil/',
     description: 'Test 6 description',
@@ -65,7 +65,7 @@ export const exploreData = [
   {
     id: '7',
     title: 'AIM 2.0',
-    icon: <BsFillBriefcaseFill {...iconProps} />,
+    icon: <BsFillBriefcaseFill className={iconProps.className} size={iconProps.size} />,
     cac: true,
     href: 'https://aim.hrc.army.mil/',
     description: 'Test 6 description',
@@ -74,7 +74,7 @@ export const exploreData = [
   {
     id: '8',
     title: 'Cyber Awareness Challenge',
-    icon: <GiComputing {...iconProps} />,
+    icon: <GiComputing className={iconProps.className} size={iconProps.size} />,
     cac: true,
     href: 'https://cs.signal.army.mil/',
     description: 'Test 6 description',
