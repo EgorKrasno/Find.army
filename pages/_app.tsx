@@ -26,7 +26,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         />
       </Head>
       <div
-        className="flex flex-col dark:bg-zinc-900 bg-zinc-100 min-h-screen antialiased font-purista transition ease-in-out">
+        className="flex flex-col dark:background-dark background-light min-h-screen antialiased font-purista transition ease-in-out">
         <Nav/>
         <main className="flex-1">
           <Component {...pageProps} />

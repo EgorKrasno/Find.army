@@ -44,7 +44,7 @@ const Nav = () => {
           <div className="flex items-center">
             <Link href="/" passHref>
               <div className="flex space-x-3">
-                <GiMagnifyingGlass className="text-blue-500 dark:text-yellow-400" size="48"/>
+                <GiMagnifyingGlass className="text-zinc-800 dark:text-yellow-400" size="48"/>
                 <h1 className="dark:text-zinc-50 text-zinc-900 text-4xl font-bold tracking-wide">Find.Army</h1>
               </div>
             </Link>

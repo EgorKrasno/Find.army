@@ -3,3 +3,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+    scrollbar-gutter: stable;
+}
+
+@layer components {
+    .background-dark {
+        height: 100%;
+        margin: 0;
+        background-image: radial-gradient(ellipse at top left, rgba(24, 24, 27, 0.8), transparent),
+        radial-gradient(ellipse at bottom left, rgba(24, 24, 27, 0.8), transparent),
+        radial-gradient(ellipse at top right, rgba(24, 24, 27, 0.8), transparent),
+        radial-gradient(ellipse at bottom right, rgba(24, 24, 27, 0.8), transparent),
+        url(../public/pattern-dark.png);
+    }
+
+    .background-light {
+        min-height: 100vh;
+        margin: 0;
+        background-image: radial-gradient(ellipse at top left, rgb(247, 250, 252, 0.8), transparent),
+        radial-gradient(ellipse at bottom left, rgba(247, 250, 252, 0.8), transparent),
+        radial-gradient(ellipse at top right, rgba(247, 250, 252, 0.8), transparent),
+        radial-gradient(ellipse at bottom right, rgba(247, 250, 252, 0.8), transparent),
+        url(../public/pattern.png);
+    }
+}

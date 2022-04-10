@@ -2,7 +2,8 @@ import Link from "next/link";
 import {BsFillGrid3X2GapFill} from "react-icons/bs";
 
 
-interface Item {
+export interface Block {
+  id: string;
   title: string,
   icon: any,
   cac: boolean,
@@ -11,7 +12,7 @@ interface Item {
 }
 
 interface Props {
-  item: Item,
+  item: Block,
   copyToClipboard: (item: string) => void,
   copiedHref: string,
   text: string,
@@ -38,7 +39,7 @@ const LinkBlock = ({item, copyToClipboard, copiedHref, text, isDragging, attribu
                 dark:ring-offset-zinc-900 ring-offset-4 ease-in-out
                 h-full`}>
                 <div
-                  className={`${isDragging ? 'shadow-2xl dark:shadow-yellow-400/50 shadow-blue-500/50' : 'shadow-md dark:shadow-none'} block w-full h-full bg-cover bg-center dark:border-zinc-700 border border-zinc-400 transition-all duration-300 ease-in-out
+                  className={`${isDragging ? 'shadow-2xl dark:shadow-yellow-400/50 shadow-zinc-900/80' : 'shadow-md dark:shadow-none'} block w-full h-full bg-cover bg-center dark:border-zinc-700 border border-zinc-400 transition-all duration-300 ease-in-out
                   rounded bg-no-repeat bg-zinc-200 dark:bg-zinc-800 flex justify-center items-center`}>
                   {item.icon}
                 </div>
@@ -83,7 +84,7 @@ const LinkBlock = ({item, copyToClipboard, copiedHref, text, isDragging, attribu
         </div>
       </Link> :
       <div
-        className={`z-10 group col-span-4 mb-16 cursor-pointer ring ring-zinc-700 ring-1 rounded`}
+        className={`z-10 group col-span-4 mb-16 cursor-pointer ring ring-zinc-600 ring-1 rounded`}
       >
         <div className="relative w-full h-full grid grid-rows-explore-tabs"/>
       </div>
