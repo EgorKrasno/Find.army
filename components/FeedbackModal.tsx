@@ -61,13 +61,13 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
             placeholder="Your feedback..."
             maxLength={5000}
             onChange={(e) => setFeedbackText(e.target.value)}
-            className={`mb-3 rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-zinc-500 focus:border-zinc-800 transition duration-300 ease-out`}/>
+            className={`mb-3 rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}/>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Optional email address"
-            className={`rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-zinc-500 focus:border-zinc-800 transition duration-300 ease-out`}
+            className={`rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}
           />
         </div>
 
@@ -96,9 +96,9 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
             </div>
 
           </div>
-          <div
-            className="dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-zinc-800 rounded dark:text-zinc-900 text-zinc-50 px-3 py-1 font-semibold transition duration-300 ease-in-out">Send
-          </div>
+          <button
+            className="focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-zinc-800 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-zinc-800 rounded dark:text-zinc-900 text-zinc-50 px-3 py-1 font-semibold transition duration-300 ease-in-out">Send
+          </button>
         </div>
       </div>
     </div>
