@@ -29,6 +29,34 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
     }
   }, [isOpen]);
 
+  const submitFeedback = () => {
+    if (feedbackText.length > 0 && selectedRating !== null) {
+      const data = {
+        text: feedbackText,
+        email,
+        rating: selectedRating
+      };
+
+      fetch('/api/feedback', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then((res) => {
+        console.log(res);
+        console.log(res.status);
+        if (res.status === 200) {
+          closeModal();
+        }
+      });
+    } else {
+      //TODO: Form error handling
+      console.log('Please fill out all fields');
+    }
+  }
+
   const handleClickOutside = (event: any) => {
     if ((isOpen && modalRef.current) && !modalRef.current.contains(event.target)) {
       closeModal();
@@ -97,6 +125,7 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
 
           </div>
           <button
+            onClick={submitFeedback}
             className="focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-zinc-800 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-zinc-800 rounded dark:text-zinc-900 text-zinc-50 px-3 py-1 font-semibold transition duration-300 ease-in-out">Send
           </button>
         </div>

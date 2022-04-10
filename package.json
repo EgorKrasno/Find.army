@@ -11,8 +11,10 @@
   "dependencies": {
     "@dnd-kit/core": "^5.0.3",
     "@dnd-kit/sortable": "^6.0.1",
+    "dotenv": "^16.0.0",
     "fuse.js": "^6.5.3",
     "next": "12.1.4",
+    "nodemailer": "^6.7.3",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1"
