@@ -62,7 +62,7 @@ const LinkBlock = ({item, copyToClipboard, copiedHref, text, isDragging, attribu
                     e.stopPropagation();
                     copyToClipboard(item.href);
                   }}
-                  className={`${!isOverlay && 'transition-all duration-300'} left-5 absolute bg-zinc-900 dark:bg-zinc-200 text-zinc-50 dark:text-zinc-900 font-semibold z-20 cursor-pointer hover:ring hover:ring-blue-500 rounded py-1.5 px-5 top-3.5 opacity-0 group-hover:opacity-100 ease-in-out`}>
+                  className={`${!isOverlay && 'transition-all duration-300'} left-5 absolute bg-zinc-900 dark:bg-zinc-200 text-zinc-50 dark:text-zinc-900 font-semibold z-20 cursor-pointer hover:ring hover:ring-yellow-300 ring-offset-4 dark:ring-offset-zinc-800 rounded py-1.5 px-5 top-3.5 opacity-0 group-hover:opacity-100 ease-in-out`}>
                   {copiedHref.length > 0 && copiedHref === item.href
                     ? 'Copied!'
                     : 'Copy Link'}

@@ -2,9 +2,11 @@ import Link from 'next/link';
 import {useEffect, useState} from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import {GiMagnifyingGlass} from "react-icons/gi";
+import FeedbackModal from "./FeedbackModal";
 
 const Nav = () => {
   const [isDarkModeActive, setIsDarkModeActive] = useState(true);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
   useEffect(() => {
     if (localStorage.mainTheme && localStorage.mainTheme === 'dark') {
@@ -36,31 +38,44 @@ const Nav = () => {
 
 
   return (
-    <header className="relative py-9 lg:py-12 select-none">
-      <nav
-        className="text-primary xl:mx-auto px-4 sm:px-8 xl:px-0 max-w-screen-xl flex max-w-8xl items-center
+    <>
+      <header className="relative py-9 lg:py-12 select-none">
+        <nav
+          className="text-primary xl:mx-auto px-4 sm:px-8 xl:px-0 max-w-screen-xl flex max-w-8xl items-center
                 space-x-4 sm:space-x-8 w-full box-border flex flex-row justify-between md:justify-start">
-        <div className="flex justify-between items-center w-full">
-          <div className="flex items-center">
-            <Link href="/" passHref>
-              <div className="flex space-x-3">
-                <GiMagnifyingGlass className="text-zinc-800 dark:text-yellow-400" size="48"/>
-                <h1 className="dark:text-zinc-50 text-zinc-900 text-4xl font-bold tracking-wide">Find.Army</h1>
+          <div className="flex justify-between items-center w-full">
+            <div className="flex items-center">
+              <Link href="/" passHref>
+                <div className="flex space-x-3">
+                  <GiMagnifyingGlass className="text-zinc-800 dark:text-yellow-400" size="48"/>
+                  <h1 className="dark:text-zinc-50 text-zinc-900 text-4xl font-bold tracking-wide">Find.Army</h1>
+                </div>
+              </Link>
+
+            </div>
+            <div className="flex items-center space-x-6">
+              <div
+                onClick={(e) => {
+                  setIsFeedbackModalOpen(true);
+                  e.stopPropagation();
+                }}
+                className="dark:bg-zinc-900 bg-zinc-50 font-semibold rounded py-2 px-4 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none"
+              >
+                Feedback
               </div>
-            </Link>
-
-
+              <DarkModeToggle
+                className="rounded p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none"
+                onClick={toggleDarkMode}
+                size={1.4}
+                darkMode={isDarkModeActive}/>
+            </div>
           </div>
-          <div className="flex items-center">
-            <DarkModeToggle
-              className="rounded p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none"
-              onClick={toggleDarkMode}
-              size={1.4}
-              darkMode={isDarkModeActive}/>
-          </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+        <FeedbackModal
+          isOpen={isFeedbackModalOpen}
+          closeModal={() => setIsFeedbackModalOpen(false)}/>
+      </header>
+    </>
   );
 };
 

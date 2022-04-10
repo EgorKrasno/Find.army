@@ -110,7 +110,6 @@ const Home = () => {
       let blocks = [];
       for (const id of order) {
         const block = exploreData.find(item => item.id === id);
-        console.log(block);
         if (block) blocks.push(block);
       }
       setBlocks(blocks);
@@ -159,46 +158,53 @@ const Home = () => {
   }
 
   return (
-    console.log(blocks),
-      <div className="mx-12 mt-16">
-        <ExploreSearch
-          text={text}
-          setText={setText}
-        />
-        <div className="grid grid-cols-4 gap-x-10 md:grid-cols-8 lg:grid-cols-12 lg:gap-x-16 mx-auto max-w-7xl">
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-            onDragStart={handleDragStart}
+    <div className="mx-12 mt-16">
+      <ExploreSearch
+        text={text}
+        setText={setText}
+      />
+      <div className="grid grid-cols-4 gap-x-10 md:grid-cols-8 lg:grid-cols-12 lg:gap-x-16 mx-auto max-w-7xl">
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+          onDragStart={handleDragStart}
+        >
+          <SortableContext
+            items={searchFilteredData}
+            strategy={rectSortingStrategy}
           >
-            <SortableContext
-              items={searchFilteredData}
-              strategy={rectSortingStrategy}
-            >
-              {searchFilteredData.map((item) => (
+            {searchFilteredData.length > 0 ? searchFilteredData.map((item) => (
                 <Wrapper key={item.id}
                          id={item.id}
                          item={item}
                          text={text}
                          copyToClipboard={copyToClipboard}
                          copiedHref={copiedHref}/>
-              ))}
-            </SortableContext>
-            <DragOverlay>
-              {activeBlock ? (
-                <LinkBlock
-                  isDragging={true}
-                  isOverlay={true}
-                  item={activeBlock}
-                  text={text}
-                  copyToClipboard={copyToClipboard}
-                  copiedHref={copiedHref}/>
-              ) : null}
-            </DragOverlay>
-          </DndContext>
-        </div>
+              )) :
+              <div className="flex flex-col items-center justify-center w-full col-span-full">
+                <div className="text-center">
+                  <h1 className="text-6xl font-bold">
+                    No results found
+                  </h1>
+                </div>
+              </div>
+            }
+          </SortableContext>
+          <DragOverlay>
+            {activeBlock ? (
+              <LinkBlock
+                isDragging={true}
+                isOverlay={true}
+                item={activeBlock}
+                text={text}
+                copyToClipboard={copyToClipboard}
+                copiedHref={copiedHref}/>
+            ) : null}
+          </DragOverlay>
+        </DndContext>
       </div>
+    </div>
   );
 };
 
