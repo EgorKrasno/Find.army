@@ -12,7 +12,7 @@ export const exploreData = [
   {
     id: '1',
     title: 'Army Email',
-    icon: <AiOutlineMail className='dark:text-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <AiOutlineMail className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: true,
     href: 'https://webmail.apps.mil/mail',
     description: 'Test 5 description',
@@ -20,7 +20,7 @@ export const exploreData = [
   {
     id: '2',
     title: 'MyPay',
-    icon: <MdAttachMoney className='dark:fill-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <MdAttachMoney className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: false,
     href: 'https://mypay.dfas.mil/#/',
     description: 'Test 6 description',
@@ -29,7 +29,7 @@ export const exploreData = [
   {
     id: '3',
     title: 'MedPros',
-    icon: <GiHealthNormal className='dark:stroke-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <GiHealthNormal className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: true,
     href: 'https://medpros.mods.army.mil/portal',
     description: 'Test 6 description',
@@ -38,7 +38,7 @@ export const exploreData = [
   {
     id: '4',
     title: 'My Clothing Record',
-    icon: <GiClothes className='dark:stroke-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <GiClothes className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: true,
     href: 'https://ism.army.mil/ism/SelfServiceServlet?nav.nav_id=ssMyClothing',
     description: 'Test 6 description',
@@ -47,7 +47,7 @@ export const exploreData = [
   {
     id: '5',
     title: 'TRICARE',
-    icon: <GiHealthNormal className='dark:stroke-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <GiHealthNormal className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: false,
     href: 'https://tricare.mil/',
     description: 'Test 6 description',
@@ -56,7 +56,7 @@ export const exploreData = [
   {
     id: '6',
     title: 'Army Career Tracker (ACT)',
-    icon: <BsFillBriefcaseFill className='dark:stroke-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <BsFillBriefcaseFill className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: true,
     href: 'https://actnow.army.mil/',
     description: 'Test 6 description',
@@ -65,7 +65,7 @@ export const exploreData = [
   {
     id: '7',
     title: 'AIM 2.0',
-    icon: <BsFillBriefcaseFill className='dark:stroke-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <BsFillBriefcaseFill className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: true,
     href: 'https://aim.hrc.army.mil/',
     description: 'Test 6 description',
@@ -74,7 +74,7 @@ export const exploreData = [
   {
     id: '8',
     title: 'Cyber Awareness Challenge',
-    icon: <GiComputing className='dark:stroke-yellow-300 stroke-blue-400' size={iconProps.size}/>,
+    icon: <GiComputing className='dark:fill-yellow-300 fill-blue-400' size={128}/>,
     cac: true,
     href: 'https://cs.signal.army.mil/',
     description: 'Test 6 description',

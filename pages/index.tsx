@@ -1,7 +1,6 @@
 import Fuse from 'fuse.js';
 import {useState} from 'react';
 import ExploreSearch from "../components/ExploreSearch";
-import {exploreData} from "../data/exporeData";
 import {
   closestCenter,
   DndContext,
@@ -14,11 +13,14 @@ import {
 import {arrayMove, rectSortingStrategy, SortableContext, sortableKeyboardCoordinates,} from '@dnd-kit/sortable';
 import Wrapper from "../components/Wrapper";
 import LinkBlock from "../components/LinkBlock";
+import {exploreData} from "../data/exporeData";
+
 
 const fuse = new Fuse(exploreData, {
   keys: ['title', 'tags'],
   threshold: 0.3,
 });
+
 
 const Home = () => {
   const [text, setText] = useState('');
