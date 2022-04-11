@@ -1,5 +1,7 @@
 import {useEffect, useRef, useState} from "react";
 import {CgClose} from "react-icons/cg";
+import {FaCheck} from "react-icons/fa";
+import {SiSpinrilla} from "react-icons/si";
 
 interface Props {
   isOpen: boolean,
@@ -10,6 +12,8 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
   const [feedbackText, setFeedbackText] = useState('');
   const [email, setEmail] = useState('');
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -19,48 +23,53 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
       setFeedbackText('');
       setEmail('');
       setSelectedRating(null);
+      setIsSubmitting(false);
+      setSubmitted(false);
 
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('keydown', handleEsc)
       return () => {
-        document.removeEventListener('click', handleClickOutside);
+        document.removeEventListener('mousedown', handleClickOutside);
         document.removeEventListener('keydown', handleEsc)
       };
     }
   }, [isOpen]);
 
   const submitFeedback = () => {
-    if (feedbackText.length > 0 && selectedRating !== null) {
+    if (feedbackText.trim().length > 0) {
       const data = {
         text: feedbackText,
         email,
         rating: selectedRating
       };
 
+      setIsSubmitting(true);
       fetch('/api/feedback', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json, text/plain, */*',
+          'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       }).then((res) => {
-        console.log(res);
-        console.log(res.status);
         if (res.status === 200) {
-          closeModal();
+          setSubmitted(true);
+          setTimeout(() => {
+            closeModal();
+          }, 2000);
         }
       });
     } else {
-      //TODO: Form error handling
-      console.log('Please fill out all fields');
+      setIsSubmitting(false);
+      setSubmitted(true);
+      closeModal();
     }
   }
 
   const handleClickOutside = (event: any) => {
+    if (submitted) return;
     if ((isOpen && modalRef.current) && !modalRef.current.contains(event.target)) {
       closeModal();
-      console.log("clicked outside");
     }
   };
 
@@ -71,64 +80,73 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
   return (
     <div className={`${isOpen && 'show-modal'} modal z-50`}>
       <div
-        ref={modalRef}
+
         className="modal-content dark:bg-zinc-900 bg-zinc-50 rounded border dark:border-zinc-700 border-zinc-400 w-[400px]">
-        <div className=" flex flex-col px-5 pt-3">
-          <div className="flex justify-between items-center mb-3">
-            <h3
-              className="font-semibold text-lg dark:text-zinc-300 text-zinc-700 transition duration-300 ease-in-out">Feedback</h3>
-            <CgClose
-              className="dark:text-zinc-500 hover:dark:text-zinc-50 text-zinc-500 hover:text-zinc-900 cursor-pointer transition duration-300 ease-in-out"
-              size={22} onClick={closeModal}/>
-          </div>
-          <textarea
-            ref={textareaRef}
-            autoFocus
-            rows={4}
-            value={feedbackText}
-            placeholder="Your feedback..."
-            maxLength={5000}
-            onChange={(e) => setFeedbackText(e.target.value)}
-            className={`mb-3 rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}/>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Optional email address"
-            className={`rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}
-          />
-        </div>
-
-        <div
-          className="flex justify-between items-center dark:bg-zinc-800 bg-zinc-200 mt-3 px-5 py-3 rounded-b border-t dark:border-zinc-700 border-zinc-400">
-          <div className="flex space-x-3">
-            <div
-              onClick={() => setSelectedRating(4)}
-              className={`${selectedRating === 4 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-              <div className="pt-0.5">&#129321;</div>
-            </div>
-            <div
-              onClick={() => setSelectedRating(3)}
-              className={`${selectedRating === 3 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-              <div className="pt-0.5">&#128515;</div>
-            </div>
-            <div
-              onClick={() => setSelectedRating(2)}
-              className={`${selectedRating === 2 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-              <div className="pt-0.5">&#128543;</div>
-            </div>
-            <div
-              onClick={() => setSelectedRating(1)}
-              className={`${selectedRating === 1 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-              <div className="pt-0.5">&#128545;</div>
+        {!submitted ? <div ref={modalRef}>
+            <div className=" flex flex-col px-5 pt-3">
+              <div className="flex justify-between items-center mb-3">
+                <h3
+                  className="font-semibold text-lg dark:text-zinc-300 text-zinc-700 transition duration-300 ease-in-out">Feedback</h3>
+                <CgClose
+                  className="dark:text-zinc-500 hover:dark:text-zinc-50 text-zinc-500 hover:text-zinc-900 cursor-pointer transition duration-300 ease-in-out"
+                  size={22} onClick={closeModal}/>
+              </div>
+              <textarea
+                ref={textareaRef}
+                autoFocus
+                rows={4}
+                value={feedbackText}
+                placeholder="Your feedback..."
+                maxLength={5000}
+                onChange={(e) => setFeedbackText(e.target.value)}
+                className={`mb-3 rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}/>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Optional email address"
+                className={`rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}
+              />
             </div>
 
+            <div
+              className="flex justify-between items-center dark:bg-zinc-800 bg-zinc-200 mt-3 px-5 py-3 rounded-b border-t dark:border-zinc-700 border-zinc-400">
+              <div className="flex space-x-3">
+                <div
+                  onClick={() => setSelectedRating(4)}
+                  className={`${selectedRating === 4 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  <div className="pt-0.5">&#129321;</div>
+                </div>
+                <div
+                  onClick={() => setSelectedRating(3)}
+                  className={`${selectedRating === 3 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  <div className="pt-0.5">&#128515;</div>
+                </div>
+                <div
+                  onClick={() => setSelectedRating(2)}
+                  className={`${selectedRating === 2 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  <div className="pt-0.5">&#128543;</div>
+                </div>
+                <div
+                  onClick={() => setSelectedRating(1)}
+                  className={`${selectedRating === 1 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  <div className="pt-0.5">&#128545;</div>
+                </div>
+
+              </div>
+              <button
+                disabled={isSubmitting || feedbackText.trim().length <= 0}
+                onClick={submitFeedback}
+                className={`${(feedbackText.trim().length <= 0 || isSubmitting) && 'opacity-50 cursor-auto'} flex justify-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-zinc-800 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-zinc-800 rounded dark:text-zinc-900 text-zinc-50 h-8 w-20 font-semibold transition duration-300 ease-in-out`}>
+                {isSubmitting ? <SiSpinrilla className="dark:text-zinc-900 animate-spin" size={18}/> : 'Submit'}
+              </button>
+            </div>
+          </div> :
+          <div className="text-xl w-full h-[291px] space-y-4 flex flex-col justify-center items-center">
+            <FaCheck size={112} className={`fade-in dark:text-yellow-400 text-green-500`}/>
+            <p className="fade-in-delay text-4xl font-bold">Thank you!</p>
           </div>
-          <button
-            onClick={submitFeedback}
-            className="focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-zinc-800 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-zinc-800 rounded dark:text-zinc-900 text-zinc-50 px-3 py-1 font-semibold transition duration-300 ease-in-out">Send
-          </button>
-        </div>
+        }
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ import {NextApiRequest, NextApiResponse} from "next";
 
 interface Data {
   text: string;
-  email: string;
-  rating: string;
+  email?: string;
+  rating?: string;
 }
 
 const PASSWORD = process.env.password;
@@ -26,7 +26,7 @@ export default (req: NextApiRequest, res: NextApiResponse<Data>) => {
     from: 'egorkra@gmail.com',
     to: 'egorkra@gmail.com',
     subject: `Message From Find.Army`,
-    text: `Email: ${req.body.email} \n\n Message: ${req.body.text}t \n\n Rating: ${req.body.rating}`,
+    text: `Email: ${req.body?.email} \n\nMessage: ${req.body.text}t \n\nRating: ${req.body?.rating}`,
   }
 
   transporter.sendMail(mailData, function (err: any, info: any) {
