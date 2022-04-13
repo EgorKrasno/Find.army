@@ -1,5 +1,5 @@
 import {BsFillGrid3X2GapFill} from "react-icons/bs";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {CgSpinnerTwo} from "react-icons/cg";
 
 
@@ -26,6 +26,9 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
   const [isChildHovered, setIsChildHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
 
+  useEffect(() => {
+    setClicked(false);
+  }, []);
 
   const copyToClipboard = (href: string) => {
     navigator.clipboard.writeText(href).then((r) => {
