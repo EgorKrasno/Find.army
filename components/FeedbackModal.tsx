@@ -138,7 +138,7 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
               <button
                 disabled={isSubmitting || feedbackText.trim().length <= 0}
                 onClick={submitFeedback}
-                className={`disabled:opacity-50 disabled:cursor-auto flex justify-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-sky-700 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-sky-700 rounded dark:text-zinc-900 text-zinc-50 h-8 w-20 font-semibold transition duration-300 ease-in-out`}>
+                className={`dark:disabled:hover:bg-yellow-400 disabled:hover:bg-sky-700 disabled:opacity-50 disabled:cursor-auto flex justify-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-sky-700 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-sky-600 cursor-pointer dark:bg-yellow-400 bg-sky-700 rounded dark:text-zinc-900 text-zinc-50 h-8 w-20 font-semibold transition duration-300 ease-in-out`}>
                 {isSubmitting ? <SiSpinrilla className="dark:text-zinc-900 animate-spin" size={18}/> : 'Submit'}
               </button>
             </div>
