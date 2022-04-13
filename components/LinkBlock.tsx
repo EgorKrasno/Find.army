@@ -27,7 +27,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    setClicked(false);
+    return () => setClicked(false);
   }, []);
 
   const copyToClipboard = (href: string) => {
@@ -38,6 +38,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
       }, 3000);
     });
   };
+
 
   return (
     !(isDragging && !isOverlay) ?
