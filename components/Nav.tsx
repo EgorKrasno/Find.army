@@ -48,12 +48,12 @@ const Nav = () => {
               <Link href="/" passHref>
                 <div className="flex space-x-3">
                   <GiMagnifyingGlass className="text-sky-700 dark:text-yellow-400" size="48"/>
-                  <h1 className="dark:text-zinc-50 text-zinc-900 text-4xl font-bold tracking-wide">Find.Army</h1>
+                  <h1 className="hidden sm:block dark:text-zinc-50 text-zinc-900 text-4xl font-bold tracking-wide">Find.Army</h1>
                 </div>
               </Link>
 
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-4 sm:space-x-6">
               <div
                 onClick={(e) => {
                   setIsFeedbackModalOpen(true);

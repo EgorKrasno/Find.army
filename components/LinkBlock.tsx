@@ -51,7 +51,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
           <div className="relative w-full h-full grid grid-rows-explore-tabs">
             <div
               tabIndex={0}
-              className={`${!isOverlay && 'transition duration-300'} ${!isChildHovered && 'group-hover:ring'}
+              className={`${!isOverlay && 'transition duration-300'} ${!isChildHovered && 'sm:group-hover:ring'}
                 relative aspect-h-4 aspect-w-3 rounded
                 dark:group-hover:ring-yellow-400 h-full
                 group-hover:ring-zinc-900 ring-offset-zinc-200
@@ -65,7 +65,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                   <CgSpinnerTwo className="dark:text-red-500 text-zinc-600 animate-spin" size={128}/> : item.icon}
               </div>
               {!clicked && <div
-                  className={`${!isOverlay && 'transition-all duration-300'} absolute top-4 right-5 opacity-0 group-hover:opacity-100 ease-in-out z-20 `}>
+                  className={`${!isOverlay && 'transition-all duration-300'} absolute top-4 right-5 opacity-100 sm:opacity-0 group-hover:opacity-100 ease-in-out z-20 `}>
                 {text.length <= 0 && (
                   <div
                     {...attributes}
@@ -88,14 +88,14 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                 tabIndex={0}
                 onMouseEnter={() => setIsChildHovered(true)}
                 onMouseLeave={() => setIsChildHovered(false)}
-                className={`${!isOverlay && 'transition-all duration-300'} ${isDragging && 'hidden'} focus:opacity-100 dark:focus:ring-yellow-400 focus:ring focus:outline-none dark:focus:ring-offset-zinc-800 focus:ring-sky-700 left-5 absolute bg-zinc-900 dark:bg-zinc-200 text-zinc-50 dark:text-zinc-900 font-semibold z-20 cursor-pointer hover:ring dark:hover:ring-yellow-300 hover:ring-zinc-900 ring-offset-4 dark:ring-offset-zinc-800 rounded py-1.5 px-5 top-3.5 opacity-0 group-hover:opacity-100 ease-in-out`}>
+                className={`${!isOverlay && 'transition-all duration-300'} ${isDragging && 'hidden'} focus:opacity-100 dark:focus:ring-yellow-400 focus:ring focus:outline-none dark:focus:ring-offset-zinc-800 focus:ring-sky-700 left-5 absolute bg-zinc-900 dark:bg-zinc-200 text-zinc-50 dark:text-zinc-900 font-semibold z-20 cursor-pointer hover:ring dark:hover:ring-yellow-300 hover:ring-zinc-900 ring-offset-4 dark:ring-offset-zinc-800 rounded py-1.5 px-5 top-3.5 opacity-100 sm:opacity-0 group-hover:opacity-100 ease-in-out`}>
                 {copiedHref.length > 0 && copiedHref === item.href
                   ? 'Copied!'
                   : 'Copy Link'}
               </div>
 
               <h2
-                className={`${!isOverlay && 'transition-all duration-300'} w-full h-full text-base opacity-0 ease-in-out
+                className={`${!isOverlay && 'transition-all duration-300'} w-full h-full text-base opacity-100 sm:opacity-0 ease-in-out
                     group-hover:opacity-100 font-normal text-zinc-700 dark:text-zinc-300 flex
                     flex-col-reverse p-4 absolute bottom-0 left-0 rounded`}>
                 {item.description}

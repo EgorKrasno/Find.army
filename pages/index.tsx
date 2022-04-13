@@ -13,7 +13,6 @@ import {
 import {arrayMove, rectSortingStrategy, SortableContext, sortableKeyboardCoordinates,} from '@dnd-kit/sortable';
 import Wrapper from "../components/Wrapper";
 import LinkBlock, {Block} from "../components/LinkBlock";
-import {AiOutlineMail} from "react-icons/ai";
 import {MdAttachMoney} from "react-icons/md";
 import {GiClothes, GiComputing, GiHealthNormal} from "react-icons/gi";
 import {BsFillBriefcaseFill} from "react-icons/bs";
@@ -249,7 +248,7 @@ const Home = () => {
     }
 
     return (
-      <div className="mx-12 mt-16">
+      <div className="mx-6 sm:mx-12 mt-16">
         <ExploreSearch
           text={text}
           setText={setText}
