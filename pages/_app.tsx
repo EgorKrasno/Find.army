@@ -29,7 +29,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         className="flex flex-col dark:background-dark background-light min-h-screen antialiased font-purista transition ease-in-out">
         <Nav/>
         <main className="flex-1">
-          <Component {...pageProps} />
+          <Component key={Math.random() * 1000} {...pageProps} />
         </main>
         <Footer/>
       </div>
