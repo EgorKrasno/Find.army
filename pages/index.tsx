@@ -19,12 +19,13 @@ import {GiClothes, GiComputing, GiHealthNormal} from "react-icons/gi";
 import {BsFillBriefcaseFill} from "react-icons/bs";
 import {HiOutlinePaperClip} from "react-icons/hi";
 import {FaFilePdf} from "react-icons/fa";
+import {SiMicrosoftoutlook, SiMicrosoftteams} from "react-icons/si";
 
 const exploreData = [
   {
     id: '1',
     title: 'Email 365',
-    icon: <AiOutlineMail className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <SiMicrosoftoutlook className='dark:text-yellow-300 text-sky-700' size={128}/>,
     cac: true,
     href: 'https://webmail.apps.mil/mail',
     description: '',
@@ -32,7 +33,7 @@ const exploreData = [
   {
     id: '2',
     title: 'Teams 365',
-    icon: <AiOutlineMail className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <SiMicrosoftteams className='dark:text-yellow-300 text-sky-700' size={128}/>,
     cac: true,
     href: 'https://dod.teams.microsoft.us',
     description: '',
@@ -62,7 +63,7 @@ const exploreData = [
     cac: true,
     href: 'https://ism.army.mil/ism/SelfServiceServlet?nav.nav_id=ssMyClothing',
     description: '',
-    tags: ['clothing'],
+    tags: ['clothing', 'equipment'],
   },
   {
     id: '6',
@@ -118,18 +119,20 @@ const exploreData = [
   {
     id: '12',
     title: 'ERB',
-    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
     cac: true,
     href: 'https://myerb.ahrs.army.mil/soldierLogin.do',
     description: 'Soldier Record Brief (Enlisted)',
+    tags: ['Record', 'Enlisted', 'Brief'],
   },
   {
     id: '13',
     title: 'ORB',
-    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
     cac: true,
     href: 'https://myorb.hrc.army.mil/',
     description: 'Officer Record Brief',
+    tag: ['Record', 'Officer', 'Brief'],
   },
   {
     id: '200',
@@ -138,6 +141,7 @@ const exploreData = [
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN33078-DA_FORM_31-006-EFILE-5.pdf',
     description: 'Request and Authority for Leave (DA-31)',
+    tags: ['pdf', 'request', 'authority', 'DA-31'],
   },
   {
     id: '201',
@@ -146,6 +150,7 @@ const exploreData = [
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/pdf/A4856.pdf',
     description: 'Developmental Counseling Form (DA-4856)',
+    tags: ['pdf', 'DA-4856'],
   },
   {
     id: '202',
@@ -154,6 +159,7 @@ const exploreData = [
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN31947-DA_FORM_4187-002-EFILE-3.pdf',
     description: 'Personnel Action Form (DA-4187)',
+    tags: ['pdf', 'DA-4187'],
   },
   {
     id: '203',
@@ -162,6 +168,7 @@ const exploreData = [
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/pdf/ARN18064_A2062_FINAL.pdf',
     description: 'Hand Receipt (DA-2062)',
+    tags: ['pdf', 'DA-2062'],
   },
   {
     id: '204',
@@ -170,6 +177,7 @@ const exploreData = [
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN32485-DA_FORM_638-003-EFILE-4.pdf',
     description: 'Recommendation for Award (DA-638)',
+    tags: ['pdf', 'DA-638'],
   },
 ];
 
@@ -198,7 +206,7 @@ const Home = () => {
         // Detect if explore data has new blocks
         let newBlocks: Block[] = [];
         if (order.length !== exploreData.length) {
-          for (const block of exploreData) { 
+          for (const block of exploreData) {
             if (!order.includes(block.id)) {
               newBlocks.push(block);
             }
