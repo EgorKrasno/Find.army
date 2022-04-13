@@ -2,7 +2,7 @@ import {useSortable} from "@dnd-kit/sortable";
 import {CSS} from "@dnd-kit/utilities";
 import LinkBlock from "./LinkBlock";
 
-const Wrapper = (props:any) => {
+const Wrapper = (props: any) => {
   const {
     attributes,
     listeners,
@@ -28,8 +28,6 @@ const Wrapper = (props:any) => {
         isOverlay={false}
         attributes={attributes}
         listeners={listeners}
-        copyToClipboard={props.copyToClipboard}
-        copiedHref={props.copiedHref}
         text={props.text}
         item={props.item}/>
     </div>

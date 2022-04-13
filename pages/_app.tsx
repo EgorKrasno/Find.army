@@ -17,7 +17,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     <ThemeProvider>
       <Head>
         <link rel="icon" href={`${isDarkMode ? '/favicon/favicon_dark.ico' : '/favicon/favicon_light.ico'}`}/>
-        <title key="title">{process.env.APP_NAME}</title>
+        <title key="title">Find.Army - The Better AKO</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         <meta
           name="description"
