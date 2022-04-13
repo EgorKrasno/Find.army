@@ -5,9 +5,10 @@ import Head from "next/head";
 import ThemeProvider from "../components/ThemeProvider";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 
 const MyApp = ({Component, pageProps}: AppProps) => {
+  const router = useRouter()
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
