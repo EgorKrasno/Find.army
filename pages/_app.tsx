@@ -16,12 +16,12 @@ const MyApp = ({Component, pageProps}: AppProps) => {
   return (
     <ThemeProvider>
       <Head>
-        <link rel="icon" href={`${isDarkMode ? '/favicon/favicon-light.ico' : '/favicon/favicon-dark.ico'}`}/>
+        <link rel="icon" href={`${isDarkMode ? '/favicon/favicon_dark.ico' : '/favicon/favicon_light.ico'}`}/>
         <title key="title">{process.env.APP_NAME}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         <meta
           name="description"
-          content="DEV. Articles, posts, and lessons on modern development practices and libraries."
+          content="The Army Knowledge Online (AKO) alternative. Easily find links and DA-Forms to all the Army sites you need."
           key="description"
         />
       </Head>

@@ -94,6 +94,7 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
               <textarea
                 ref={textareaRef}
                 autoFocus
+                required
                 rows={4}
                 value={feedbackText}
                 placeholder="Your feedback..."
@@ -137,13 +138,13 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
               <button
                 disabled={isSubmitting || feedbackText.trim().length <= 0}
                 onClick={submitFeedback}
-                className={`${(feedbackText.trim().length <= 0 || isSubmitting) && 'opacity-50 cursor-auto'} flex justify-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-zinc-800 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-zinc-800 rounded dark:text-zinc-900 text-zinc-50 h-8 w-20 font-semibold transition duration-300 ease-in-out`}>
+                className={`disabled:opacity-50 disabled:cursor-auto flex justify-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-sky-700 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-zinc-700 cursor-pointer dark:bg-yellow-400 bg-sky-700 rounded dark:text-zinc-900 text-zinc-50 h-8 w-20 font-semibold transition duration-300 ease-in-out`}>
                 {isSubmitting ? <SiSpinrilla className="dark:text-zinc-900 animate-spin" size={18}/> : 'Submit'}
               </button>
             </div>
           </div> :
           <div className="text-xl w-full h-[291px] space-y-4 flex flex-col justify-center items-center">
-            <FaCheck size={112} className={`fade-in dark:text-yellow-400 text-green-500`}/>
+            <FaCheck size={112} className={`fade-in dark:text-yellow-400 text-sky-700`}/>
             <p className="fade-in-delay text-4xl font-bold">Thank you!</p>
           </div>
         }
