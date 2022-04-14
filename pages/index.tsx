@@ -19,6 +19,7 @@ import {BsFillBriefcaseFill} from "react-icons/bs";
 import {HiOutlinePaperClip} from "react-icons/hi";
 import {FaFilePdf} from "react-icons/fa";
 import {SiMicrosoftoutlook, SiMicrosoftteams} from "react-icons/si";
+import FeedbackButton from "../components/FeedbackButton";
 
 const exploreData = [
   {
@@ -44,7 +45,7 @@ const exploreData = [
     cac: false,
     href: 'https://mypay.dfas.mil/#/',
     description: '',
-    tags: ['pay', 'les', 'money'],
+    tags: ['pay', 'les', 'money', 'leave'],
   },
   {
     id: '4',
@@ -185,7 +186,11 @@ const fuse = new Fuse(exploreData, {
   threshold: 0.3,
 });
 
-const Home = () => {
+interface Props {
+  openModal: () => void;
+}
+
+const Home = ({openModal}: Props) => {
     const [text, setText] = useState('');
     const [blocks, setBlocks] = useState<Block[]>([]);
     const [activeBlock, setActiveBlock] = useState<any>();
@@ -271,10 +276,14 @@ const Home = () => {
                            text={text}/>
                 )) :
                 <div className="flex flex-col items-center justify-center w-full col-span-full">
-                  <div className="text-center">
+                  <div className="flex flex-col text-center items-center justify-center space-y-12">
                     <h1 className="text-6xl font-bold">
                       No results found
                     </h1>
+                    <div className="relative">
+                      <div className="absolute -inset-1 blur bg-yellow-400"/>
+                    <FeedbackButton style="relative w-64 py-2 text-2xl" openModal={openModal}/>
+                    </div>
                   </div>
                 </div>
               }

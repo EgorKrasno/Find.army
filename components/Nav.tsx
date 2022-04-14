@@ -2,11 +2,14 @@ import Link from 'next/link';
 import {useEffect, useState} from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import {GiMagnifyingGlass} from "react-icons/gi";
-import FeedbackModal from "./FeedbackModal";
+import FeedbackButton from "./FeedbackButton";
 
-const Nav = () => {
+interface Props {
+  openModal: () => void;
+}
+
+const Nav = ({openModal}: Props) => {
   const [isDarkModeActive, setIsDarkModeActive] = useState(true);
-  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
   useEffect(() => {
     if (localStorage.mainTheme && localStorage.mainTheme === 'dark') {
@@ -48,32 +51,22 @@ const Nav = () => {
               <Link href="/" passHref>
                 <div className="flex space-x-3">
                   <GiMagnifyingGlass className="text-sky-700 dark:text-yellow-400" size="48"/>
-                  <h1 className="hidden sm:block dark:text-zinc-50 text-zinc-900 text-4xl font-bold tracking-wide">Find.Army</h1>
+                  <h1
+                    className="hidden sm:block dark:text-zinc-50 text-zinc-900 text-4xl font-bold tracking-wide">Find.Army</h1>
                 </div>
               </Link>
 
             </div>
             <div className="flex items-center space-x-4 sm:space-x-6 ">
-              <div
-                onClick={(e) => {
-                  setIsFeedbackModalOpen(true);
-                  e.stopPropagation();
-                }}
-                className="dark:bg-zinc-900 bg-zinc-50 font-semibold rounded py-2 px-4 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none"
-              >
-                Feedback
-              </div>
+              <FeedbackButton openModal={openModal}/>
               <DarkModeToggle
-                className="rounded p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none"
+                className="rounded-sm p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none"
                 onClick={toggleDarkMode}
                 size={1.4}
                 darkMode={isDarkModeActive}/>
             </div>
           </div>
         </nav>
-        <FeedbackModal
-          isOpen={isFeedbackModalOpen}
-          closeModal={() => setIsFeedbackModalOpen(false)}/>
       </header>
     </>
   );

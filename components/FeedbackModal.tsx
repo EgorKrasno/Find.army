@@ -81,7 +81,7 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
     <div className={`${isOpen && 'show-modal'} modal z-50`}>
       <div
 
-        className="modal-content dark:bg-zinc-900 bg-zinc-50 rounded border dark:border-zinc-700 border-zinc-400 w-[400px]">
+        className="modal-content dark:bg-zinc-900 bg-zinc-50 rounded-sm border dark:border-zinc-700 border-zinc-400 w-[400px]">
         {!submitted ? <div ref={modalRef}>
             <div className=" flex flex-col px-5 pt-3">
               <div className="flex justify-between items-center mb-3">
@@ -100,18 +100,18 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
                 placeholder="Your feedback..."
                 maxLength={5000}
                 onChange={(e) => setFeedbackText(e.target.value)}
-                className={`mb-3 rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}/>
+                className={`mb-3 rounded-sm border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}/>
               <input
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Optional email address"
-                className={`rounded border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}
+                className={`rounded-sm border dark:border-zinc-700 border-zinc-400 w-full py-2 px-4 dark:bg-zinc-900 bg-zinc-50 dark:text-gray-50 text-zinc-900 text-base focus:outline-none dark:focus:border-yellow-400 focus:border-zinc-800 transition duration-300 ease-out`}
               />
             </div>
 
             <div
-              className="flex justify-between items-center dark:bg-zinc-800 bg-zinc-200 mt-3 px-5 py-3 rounded-b border-t dark:border-zinc-700 border-zinc-400">
+              className="flex justify-between items-center dark:bg-zinc-800 bg-zinc-200 mt-3 px-5 py-3 rounded-b-sm border-t dark:border-zinc-700 border-zinc-400">
               <div className="flex space-x-3">
                 <div
                   onClick={() => setSelectedRating(4)}
@@ -138,7 +138,7 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
               <button
                 disabled={isSubmitting || feedbackText.trim().length <= 0}
                 onClick={submitFeedback}
-                className={`dark:disabled:hover:bg-yellow-400 disabled:hover:bg-sky-700 disabled:opacity-50 disabled:cursor-auto flex justify-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-sky-700 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-sky-600 cursor-pointer dark:bg-yellow-400 bg-sky-700 rounded dark:text-zinc-900 text-zinc-50 h-8 w-20 font-semibold transition duration-300 ease-in-out`}>
+                className={`dark:disabled:hover:bg-yellow-400 disabled:hover:bg-sky-700 disabled:opacity-50 disabled:cursor-auto flex justify-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-zinc-800 focus:ring-offset-zinc-200 focus:ring-sky-700 dark:focus:ring-yellow-400 dark:shadow-none shadow dark:hover:bg-yellow-300 hover:bg-sky-600 cursor-pointer dark:bg-yellow-400 bg-sky-700 rounded-sm dark:text-zinc-900 text-zinc-50 h-8 w-20 font-semibold transition duration-300 ease-in-out`}>
                 {isSubmitting ? <SiSpinrilla className="dark:text-zinc-900 animate-spin" size={18}/> : 'Submit'}
               </button>
             </div>

@@ -15,8 +15,8 @@ const DarkModeToggle = ({onClick, darkMode, className, size = 1, transitionSpeed
   return (
     <div
       onClick={onClick}
-      className={"cursor-pointer " + className}>
-      <svg viewBox="0 0 24 24" stroke="black" strokeWidth="0.4" width={size + 'em'} height={size + 'em'} strokeLinecap="round" fill="transparent">
+      className={"cursor-pointer dark:bg-zinc-900 " + className}>
+      <svg viewBox="0 0 24 24" stroke="black" strokeWidth="0.4" width={size + 'em'} height={size + 'em'} strokeLinecap="round">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
