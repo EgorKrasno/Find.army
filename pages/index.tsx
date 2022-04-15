@@ -281,7 +281,7 @@ const Home = ({openModal}: Props) => {
                       No results found
                     </h1>
                     <div className="relative">
-                      <div className="absolute -inset-1 blur bg-yellow-400"/>
+                      <div className="absolute -inset-1 blur dark:bg-yellow-400 bg-sky-700"/>
                     <FeedbackButton style="relative w-64 py-2 text-2xl" openModal={openModal}/>
                     </div>
                   </div>

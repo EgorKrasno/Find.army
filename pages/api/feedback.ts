@@ -22,11 +22,14 @@ export default (req: NextApiRequest, res: NextApiResponse<Data>) => {
     secure: true,
   })
 
+  const email = req.body?.email.substring(5000).trim();
+  const message = req.body?.text.substring(5000).trim();
+
   const mailData = {
-    from: 'egorkra@gmail.com',
+    from: 'yourmom@gmail.com',
     to: 'egorkra@gmail.com',
-    subject: `Message From Find.Army`,
-    text: `Email: ${req.body?.email} \n\nMessage: ${req.body.text}t \n\nRating: ${req.body?.rating}`,
+    subject: `Feedback from Find.Army`,
+    text: `Email: ${email} \n\nMessage: ${message}t \n\nRating: ${req.body?.rating}`,
   }
 
   transporter.sendMail(mailData, function (err: any, info: any) {

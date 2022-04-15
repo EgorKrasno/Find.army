@@ -7,6 +7,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import {useRouter} from "next/router";
 import FeedbackModal from "../components/FeedbackModal";
+import Script from 'next/script'
 
 const MyApp = ({Component, pageProps}: AppProps) => {
   const router = useRouter()
@@ -21,6 +22,8 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 
   return (
     <ThemeProvider>
+      <Script async defer data-website-id="857d96c3-4c73-43ae-9fef-3c348885790a"
+              src="https://tight-math-8745.findarmy.workers.dev/findarmy.js"/>
       <Head>
         <link rel="icon" href={`${isDarkMode ? '/favicon/favicon_dark.ico' : '/favicon/favicon_light.ico'}`}/>
         <title key="title">Find.Army - The Better AKO</title>
@@ -37,9 +40,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         <Nav openModal={openModal}/>
         <main className="flex-1">
           <Component
+            key={router.asPath}
             openModal={openModal}
             {...pageProps}
-            key={router.asPath}
             {...pageProps} />
         </main>
         <Footer/>

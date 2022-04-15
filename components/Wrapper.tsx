@@ -19,7 +19,7 @@ const Wrapper = (props: any) => {
 
   return (
     <div
-      className="group col-span-4 mb-16 cursor-pointer"
+      className="col-span-4 mb-16"
       ref={setNodeRef}
       style={style}
     >
