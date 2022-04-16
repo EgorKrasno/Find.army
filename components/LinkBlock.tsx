@@ -27,6 +27,8 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
+    console.log("Hello World!");
+    setClicked(false);
     return () => setClicked(false);
   }, []);
 
