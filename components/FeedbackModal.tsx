@@ -81,7 +81,7 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
     <div className={`${isOpen && 'show-modal'} modal z-50`}>
       <div
 
-        className="modal-content dark:bg-zinc-900 bg-zinc-50 rounded-sm border dark:border-zinc-700 border-zinc-400 w-[400px]">
+        className="modal-content dark:bg-zinc-900 bg-zinc-50 rounded-sm border dark:border-zinc-700 border-zinc-400 w-full md:w-[525px]">
         {!submitted ? <div ref={modalRef}>
             <div className=" flex flex-col px-5 pt-3">
               <div className="flex justify-between items-center mb-3">
@@ -95,7 +95,7 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
                 ref={textareaRef}
                 autoFocus
                 required
-                rows={4}
+                rows={7}
                 value={feedbackText}
                 placeholder="Your feedback..."
                 maxLength={5000}
@@ -116,22 +116,22 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
                 <div
                   onClick={() => setSelectedRating(4)}
                   className={`${selectedRating === 4 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div className="pt-0.5">&#129321;</div>
+                  <div>&#129321;</div>
                 </div>
                 <div
                   onClick={() => setSelectedRating(3)}
                   className={`${selectedRating === 3 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div className="pt-0.5">&#128515;</div>
+                  <div>&#128515;</div>
                 </div>
                 <div
                   onClick={() => setSelectedRating(2)}
                   className={`${selectedRating === 2 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div className="pt-0.5">&#128543;</div>
+                  <div>&#128543;</div>
                 </div>
                 <div
                   onClick={() => setSelectedRating(1)}
                   className={`${selectedRating === 1 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div className="pt-0.5">&#128545;</div>
+                  <div>&#128545;</div>
                 </div>
 
               </div>
