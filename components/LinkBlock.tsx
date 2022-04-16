@@ -43,7 +43,10 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
     !(isDragging && !isOverlay) ?
       <>
         <a
-          onClick={() => setClicked(true)}
+          onClick={() => {
+            window.umami.trackEvent(item.title, 'Visit')
+            setClicked(true)
+          }}
           href={item.href}
           tabIndex={-1}>
           <div
