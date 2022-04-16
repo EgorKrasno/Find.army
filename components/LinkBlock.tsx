@@ -2,7 +2,6 @@ import {BsFillGrid3X2GapFill} from "react-icons/bs";
 import {useEffect, useState} from "react";
 import {CgSpinnerTwo} from "react-icons/cg";
 
-
 export interface Block {
   id: string;
   title: string,
@@ -26,11 +25,14 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
   const [isChildHovered, setIsChildHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
 
+  const handleWindowClose = () => setClicked(false);
+
   useEffect(() => {
-    console.log("Hello World!");
-    setClicked(false);
-    return () => setClicked(false);
-  }, []);
+    window.addEventListener('visibilitychange', handleWindowClose);
+    return () => {
+      window.removeEventListener('visibilitychange', handleWindowClose);
+    };
+  });
 
   const copyToClipboard = (href: string) => {
     navigator.clipboard.writeText(href).then((r) => {

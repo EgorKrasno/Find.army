@@ -40,10 +40,10 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         <Nav openModal={openModal}/>
         <main className="flex-1">
           <Component
+            {...pageProps}
             key={router.asPath}
             openModal={openModal}
-            {...pageProps}
-            {...pageProps} />
+          />
         </main>
         <Footer/>
       </div>

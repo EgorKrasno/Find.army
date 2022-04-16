@@ -195,6 +195,7 @@ const Home = ({openModal}: Props) => {
     const [blocks, setBlocks] = useState<Block[]>([]);
     const [activeBlock, setActiveBlock] = useState<any>();
 
+
     useEffect(() => {
       if (!localStorage.getItem('blocks')) {
         setBlocks(exploreData)
