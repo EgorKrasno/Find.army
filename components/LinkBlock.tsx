@@ -39,14 +39,6 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
     });
   };
 
-  const loadingMessageSpam = () => {
-
-    setTimeout(() => {
-      setClicked(false);
-    }, 1000);
-  };
-
-
   return (
     !(isDragging && !isOverlay) ?
       <>

@@ -22,7 +22,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 
   return (
     <ThemeProvider>
-      <Script async defer data-website-id="857d96c3-4c73-43ae-9fef-3c348885790a"
+      <Script crossOrigin={'anonymous'} async defer data-website-id="857d96c3-4c73-43ae-9fef-3c348885790a"
               src="https://tight-math-8745.findarmy.workers.dev/findarmy.js"/>
       <Head>
         <link rel="icon" href={`${isDarkMode ? '/favicon/favicon_dark.ico' : '/favicon/favicon_light.ico'}`}/>
