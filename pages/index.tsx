@@ -5,8 +5,9 @@ import {
   closestCenter,
   DndContext,
   DragOverlay,
-  KeyboardSensor,
+  KeyboardSensor, MouseSensor,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
@@ -360,7 +361,6 @@ const Home = ({openModal}: Props) => {
     const [blocks, setBlocks] = useState<Item[]>([]);
     const [activeBlock, setActiveBlock] = useState<any>();
 
-
     useEffect(() => {
       if (!localStorage.getItem('blocks')) {
         setBlocks(exploreData)
@@ -392,7 +392,8 @@ const Home = ({openModal}: Props) => {
       : blocks;
 
     const sensors = useSensors(
-      useSensor(PointerSensor),
+      useSensor(MouseSensor),
+      useSensor(TouchSensor),
       useSensor(KeyboardSensor, {
         coordinateGetter: sortableKeyboardCoordinates,
       })

@@ -56,13 +56,13 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
           href={item.href}
           tabIndex={-1}>
           <div
-            className={`${isDragging ? 'z-50' : 'z-10'} group col-span-4 mb-6 cursor-pointer`}
+            className={`${isDragging ? 'z-50' : 'z-10'} group col-span-4 cursor-pointer `}
           >
             <div className="relative w-full h-full grid grid-rows-explore-tabs">
               <div
                 tabIndex={0}
                 className={`${!isOverlay && 'transition duration-300'} ${!isChildHovered && 'sm:group-hover:ring'}
-                relative aspect-h-4 aspect-w-3 rounded-sm
+                relative aspect-h-4 aspect-w-3 rounded-sm 
                 dark:group-hover:ring-yellow-400 h-full
                 group-hover:ring-zinc-900 ring-offset-zinc-200
                 dark:ring-offset-zinc-900 ring-offset-4 ease-in-out
@@ -84,9 +84,9 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                       {...listeners}
                       tabIndex={-1}
                       onClick={(e) => e.stopPropagation()}
-                      className={`${!isOverlay && 'transition duration-300'} outline-none focus:outline-none dark:hover:bg-zinc-700 hover:bg-zinc-300 rounded-sm px-2 py-1 flex justify-center items-center ease-in-out`}>
+                      className={`${!isOverlay && 'transition duration-300'} ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}  outline-none focus:outline-none dark:hover:bg-zinc-700 hover:bg-zinc-300 rounded-sm px-2 py-1 flex justify-center items-center ease-in-out`}>
                       <BsFillGrid3X2GapFill
-                        className={`${isDragging ? 'dark:text-yellow-400 text-blue-500' : 'dark:text-zinc-300 text-zinc-700'} 'outline-none focus:outline-none transition duration-300 ease-in-out' }`}
+                        className={`${isDragging ? 'dark:text-yellow-400 text-blue-500' : 'dark:text-zinc-300 text-zinc-700'} outline-none focus:outline-none transition duration-300 ease-in-out' }`}
                         size={24}/>
                     </div>
                   )}
@@ -124,7 +124,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                     <FaLock className="text-zinc-900 dark:text-red-400" size={24}/>
                     <span className="text-zinc-700 dark:text-zinc-300 text-xs">NIPR</span>
                   </>}
-                  
+
                 </div>
               </div>
             </div>
