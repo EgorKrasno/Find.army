@@ -5,8 +5,8 @@ import {
   closestCenter,
   DndContext,
   DragOverlay,
-  KeyboardSensor, MouseSensor,
-  PointerSensor,
+  KeyboardSensor,
+  MouseSensor,
   TouchSensor,
   useSensor,
   useSensors,
@@ -18,18 +18,18 @@ import {MdFamilyRestroom} from "react-icons/md";
 import {GiClothes, GiComputing, GiHealthNormal} from "react-icons/gi";
 import {BsFillBriefcaseFill} from "react-icons/bs";
 import {HiIdentification, HiOutlinePaperClip} from "react-icons/hi";
-import {FaFilePdf, FaGraduationCap, FaHammer, FaMoneyBill, FaPlaneDeparture} from "react-icons/fa";
+import {FaBook, FaChartBar, FaFilePdf, FaGraduationCap, FaHammer, FaMoneyBill, FaPlaneDeparture} from "react-icons/fa";
 import {SiMicrosoftoutlook, SiMicrosoftteams} from "react-icons/si";
 import FeedbackButton from "../components/FeedbackButton";
 import {IoFitness} from "react-icons/io5";
-import {RiCustomerService2Fill} from "react-icons/ri";
+import {RiComputerLine, RiCustomerService2Fill} from "react-icons/ri";
 import {GrCertificate} from "react-icons/gr";
 
 const exploreData = [
   {
     id: '1',
     title: 'Email 365',
-    icon: <SiMicrosoftoutlook className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <SiMicrosoftoutlook className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://webmail.apps.mil/mail',
     description: '',
@@ -37,7 +37,7 @@ const exploreData = [
   {
     id: '2',
     title: 'Teams 365',
-    icon: <SiMicrosoftteams className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <SiMicrosoftteams className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://dod.teams.microsoft.us',
     description: '',
@@ -45,7 +45,7 @@ const exploreData = [
   {
     id: '3',
     title: 'MyPay',
-    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://hr.ippsa.csd.disa.mil/',
     description: '',
@@ -54,7 +54,7 @@ const exploreData = [
   {
     id: '4',
     title: 'IPPS-A',
-    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://mypay.dfas.mil/#/',
     description: 'Integrated Personnel and Payment System',
@@ -62,248 +62,355 @@ const exploreData = [
   },
   {
     id: '5',
+    title: 'TSP',
+    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: false,
+    href: 'https://www.tsp.gov/',
+    description: 'Thrift Savings Plan',
+    tags: ['401k', 'invest'],
+  },
+  {
+    id: '6',
     title: 'MedPros',
-    icon: <GiHealthNormal className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <GiHealthNormal className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://medpros.mods.army.mil/portal',
     description: '',
     tags: ['medical', 'PHA', 'Dental', 'Vision', 'Hearing', 'Immunization', 'Profile', 'DA-3349', 'IMR', 'DA-7655'],
   },
   {
-    id: '6',
+    id: '7',
     title: 'My Clothing Record',
-    icon: <GiClothes className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <GiClothes className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://ism.army.mil/ism/SelfServiceServlet?nav.nav_id=ssMyClothing',
     description: '',
     tags: ['equipment'],
   },
   {
-    id: '7',
+    id: '8',
     title: 'Cyber Awareness Challenge',
-    icon: <GiComputing className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <GiComputing className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://cs.signal.army.mil/',
     description: '',
   },
   {
-    id: '8',
+    id: '9',
     title: 'milConnect',
-    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://milconnect.dmdc.osd.mil/milconnect/',
     description: '',
     tags: ['DEERS', 'SGLI', 'SGOE', 'Life Insurance', 'education', 'beneficiary'],
   },
   {
-    id: '9',
+    id: '10',
+    title: 'milSuite',
+    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: true,
+    href: 'https://login.milsuite.mil/',
+    description: '',
+    tags: [],
+  },
+  {
+    id: '11',
     title: 'iPERMS',
-    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://iperms.hrc.army.mil/',
     description: '',
   },
   {
-    id: '10',
+    id: '12',
+    title: 'RFO',
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: true,
+    href: 'https://aim.hrc.army.mil/',
+    description: 'Request for Orders',
+    tags: ['PCS', 'HRC'],
+  },
+  {
+    id: '13',
     title: 'ERB',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://myerb.ahrs.army.mil/soldierLogin.do',
     description: 'Soldier Record Brief (Enlisted)',
     tags: ['Record', 'Enlisted', 'Brief'],
   },
   {
-    id: '11',
+    id: '14',
     title: 'ORB',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://myorb.hrc.army.mil/',
     description: 'Officer Record Brief',
     tag: ['Record', 'Officer', 'Brief'],
   },
   {
-    id: '12',
+    id: '15',
     title: 'Army Reserve Record Brief',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://selfservice.rcms.usar.army.mil/',
     description: '',
     tag: [],
   },
   {
-    id: '13',
+    id: '16',
     title: 'National Guard Record Brief',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://arngg1.ngb.army.mil/Portal/RibbonMenu.aspx?ProviderName=RecordBriefProvider',
     description: '',
     tag: [],
   },
   {
-    id: '14',
+    id: '17',
     title: 'Army Career Tracker (ACT)',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://actnow.army.mil/',
     description: '',
     tags: ['sponsorship', 'career'],
   },
   {
-    id: '15',
+    id: '18',
     title: 'AIM 2.0',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://aim.hrc.army.mil/',
     description: '',
     tags: ['officer', 'orb'],
   },
   {
-    id: '16',
+    id: '19',
     title: 'TRICARE',
-    icon: <GiHealthNormal className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <GiHealthNormal className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://tricare.mil/',
     description: '',
     tags: ['medical', 'health', 'dental', 'vision', 'insurance'],
   },
   {
-    id: '17',
+    id: '20',
     title: 'MWR',
-    icon: <MdFamilyRestroom className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <MdFamilyRestroom className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://www.armymwr.com/#',
     description: '',
     tag: [],
   },
   {
-    id: '18',
+    id: '21',
     title: 'Military OneSource',
-    icon: <MdFamilyRestroom className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <MdFamilyRestroom className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://www.militaryonesource.mil/',
     description: '',
     tags: [],
   },
   {
-    id: '19',
+    id: '22',
+    title: 'VMIS',
+    icon: <MdFamilyRestroom className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: false,
+    href: 'https://vmis.armyfamilywebportal.com/',
+    description: 'Volunteer Management Information System',
+    tags: [],
+  },
+  {
+    id: '23',
     title: 'DTMS',
-    icon: <GiComputing className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaChartBar className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://dtms.army.mil/',
     description: '',
   },
   {
-    id: '20',
+    id: '24',
+    title: 'CHESS',
+    icon: <RiComputerLine className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: true,
+    href: 'https://chess.army.mil/',
+    description: 'Computer Hardware Enterprise Software and Solutions',
+  },
+  {
+    id: '25',
     title: 'Army Maintenance Application (ARMA)',
-    icon: <FaHammer className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaHammer className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://www.armymaintenance.com/arma',
     description: '',
     tag: [],
   },
   {
-    id: '21',
+    id: '26',
     title: 'Army Fit',
-    icon: <IoFitness className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <IoFitness className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
-    href: 'https://www.armymaintenance.com/arma',
+    href: 'https://armyfit.army.mil/',
     description: '',
     tag: ['Health'],
   },
   {
-    id: '22',
+    id: '27',
     title: 'HRC',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://www.hrc.army.mil/',
     description: 'Human Resources Command',
     tag: [],
   },
   {
-    id: '23',
+    id: '28',
     title: 'ICAM Portal',
-    icon: <HiIdentification className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <HiIdentification className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://icamportal.us.army.mil/',
     description: '',
     tag: ['Identity', 'Credentials', 'Access'],
   },
   {
-    id: '24',
+    id: '29',
     title: 'AESD',
-    icon: <RiCustomerService2Fill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <RiCustomerService2Fill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://snpro.aesd-w.army.mil/',
     description: 'Army Enterprise Service Desk',
     tag: [],
   },
   {
-    id: '25',
+    id: '30',
     title: 'NCOER',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://evaluations.hrc.army.mil/',
     description: 'HRC Evaluation Entry System',
     tag: [],
   },
   {
-    id: '26',
+    id: '31',
     title: 'TAP Online',
-    icon: <FaGraduationCap className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaGraduationCap className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: false,
     href: 'https://www.sfl-tap.army.mil/',
     description: 'Transition Assistance Program',
     tag: ['SFL-TAP'],
   },
   {
-    id: '27',
+    id: '32',
     title: 'DOD SkillBridge',
-    icon: <FaGraduationCap className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaGraduationCap className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: false,
     href: 'https://skillbridge.osd.mil/',
     description: '',
     tag: ['Education', 'Training'],
   },
   {
-    id: '28',
+    id: '33',
     title: 'eLearning',
-    icon: <FaGraduationCap className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaGraduationCap className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://www.dls.army.mil/Army_e-Learning.html',
     description: '',
     tag: ['Training', 'Certificate', 'Courses'],
   },
   {
-    id: '29',
+    id: '34',
     title: 'JKO',
-    icon: <GrCertificate className='dark:svg-yellow-force svg-sky-force' size={128}/>,
+    icon: <GrCertificate className='dark:svg-yellow-force svg-sky-force' size={112}/>,
     cac: true,
     href: 'https://jko.jten.mil/',
     description: 'Joint Knowledge Online',
     tag: ['Training', 'Certificate', 'Courses'],
   },
   {
-    id: '30',
+    id: '35',
+    title: 'ATRRS',
+    icon: <GrCertificate className='dark:svg-yellow-force svg-sky-force' size={112}/>,
+    nipr: true,
+    href: 'https://atrrs.army.mil/',
+    description: 'Army Training Requirements and Resource System',
+    tag: ['Training', 'Certificate', 'Courses'],
+  },
+  {
+    id: '36',
     title: 'ALMS',
-    icon: <GrCertificate className='dark:svg-yellow-force svg-sky-force' size={128}/>,
+    icon: <GrCertificate className='dark:svg-yellow-force svg-sky-force' size={112}/>,
     cac: true,
     href: 'https://www.lms.army.mil/',
-    description: '',
+    description: 'Army Learning Management System',
     tag: ['OPSEC', 'Training', 'Certificate', 'Courses'],
   },
   {
-    id: '31',
+    id: '37',
     title: 'DTS',
-    icon: <FaPlaneDeparture className='dark:text-yellow-300 text-sky-700' size={128}/>,
+    icon: <FaPlaneDeparture className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://www.defensetravel.osd.mil/',
     description: 'Defense Travel System',
-    tag: ['GTC', 'Receipt', 'PCS', 'TDY', 'Voucher', 'Hotel'],
+    tag: ['GTC', 'Receipt', 'PCS', 'TDY', 'Voucher', 'Hotel', 'Moving', 'Transportation', 'Travel'],
+  },
+  {
+    id: '38',
+    title: 'Move.mil',
+    icon: <FaPlaneDeparture className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: true,
+    href: 'https://move.mil/',
+    description: 'Defense Travel System',
+    tag: ['PCS', 'TDY', 'Voucher', 'Hotel', 'Moving', 'Transportation', 'Travel'],
+  },
+  {
+    id: '39',
+    title: 'TRiPS',
+    icon: <FaPlaneDeparture className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: true,
+    href: 'https://trips.safety.army.mil/',
+    description: 'Travel Risk Planning System',
+    tag: [],
+  },
+  {
+    id: '40',
+    title: 'APD (DA Forms)',
+    icon: <FaBook className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: false,
+    href: 'https://armypubs.army.mil/',
+    description: 'Army Publication Directorate',
+    tag: [],
+  },
+  {
+    id: '41',
+    title: 'CAC Reference Center',
+    icon: <HiIdentification className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: false,
+    href: 'http://www.cac.mil/',
+    description: 'Army Publication Directorate',
+    tag: [],
+  },
+  {
+    id: '42',
+    title: 'Army Training Network',
+    icon: <FaBook className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: false,
+    href: 'https://atn.army.mil/',
+    description: '',
+    tag: ['ATN'],
+  },
+  {
+    id: '43',
+    title: 'ATN Digital Job Book',
+    icon: <FaChartBar className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: false,
+    href: 'https://atn.army.mil/mytraining/',
+    description: 'View DTMS, Height/Weight, APFT, ACFT, and weapon records',
+    tag: [],
   },
   {
     id: '200',
     title: 'Leave Form (DA-31)',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={108}/>,
+    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN33078-DA_FORM_31-006-EFILE-5.pdf',
     description: 'Request and Authority for Leave (DA-31)',
@@ -312,7 +419,7 @@ const exploreData = [
   {
     id: '201',
     title: 'Counseling Form',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={108}/>,
+    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/pdf/A4856.pdf',
     description: 'Developmental Counseling Form (DA-4856)',
@@ -321,7 +428,7 @@ const exploreData = [
   {
     id: '202',
     title: 'Personnel Action Form',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={108}/>,
+    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN31947-DA_FORM_4187-002-EFILE-3.pdf',
     description: 'Personnel Action Form (DA-4187)',
@@ -330,7 +437,7 @@ const exploreData = [
   {
     id: '203',
     title: 'Hand Receipt',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={108}/>,
+    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/pdf/ARN18064_A2062_FINAL.pdf',
     description: 'Hand Receipt (DA-2062)',
@@ -339,7 +446,7 @@ const exploreData = [
   {
     id: '204',
     title: 'Recommendation for Award Form',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={108}/>,
+    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
     cac: false,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN32485-DA_FORM_638-003-EFILE-4.pdf',
     description: 'Recommendation for Award (DA-638)',
@@ -360,6 +467,14 @@ const Home = ({openModal}: Props) => {
     const [text, setText] = useState('');
     const [blocks, setBlocks] = useState<Item[]>([]);
     const [activeBlock, setActiveBlock] = useState<any>();
+
+    const sensors = useSensors(
+      useSensor(MouseSensor),
+      useSensor(TouchSensor),
+      useSensor(KeyboardSensor, {
+        coordinateGetter: sortableKeyboardCoordinates,
+      })
+    );
 
     useEffect(() => {
       if (!localStorage.getItem('blocks')) {
@@ -391,19 +506,11 @@ const Home = ({openModal}: Props) => {
       ? results.map((result) => result.item)
       : blocks;
 
-    const sensors = useSensors(
-      useSensor(MouseSensor),
-      useSensor(TouchSensor),
-      useSensor(KeyboardSensor, {
-        coordinateGetter: sortableKeyboardCoordinates,
-      })
-    );
-
     const handleDragStart = (event: any) => {
       setActiveBlock(blocks.find(item => item.id === event.active.id)!);
     };
 
-    function handleDragEnd(event: any) {
+    const handleDragEnd = (event: any) => {
       const {active, over} = event;
 
       if (active.id !== over.id) {
@@ -426,45 +533,45 @@ const Home = ({openModal}: Props) => {
           setText={setText}
         />
         <div className="grid grid-cols-4 gap-x-10 md:grid-cols-8 lg:grid-cols-12 lg:gap-x-16 mx-auto max-w-7xl">
-          <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-            onDragStart={handleDragStart}
+          {blocks.length > 0 && <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+              onDragStart={handleDragStart}
           >
-            <SortableContext
-              items={searchFilteredData}
-              strategy={rectSortingStrategy}
-            >
-              {searchFilteredData.length > 0 ? searchFilteredData.map((item) => (
-                  <Wrapper key={item.id}
-                           id={item.id}
-                           item={item}
-                           text={text}/>
-                )) :
-                <div className="flex flex-col items-center justify-center w-full col-span-full">
-                  <div className="flex flex-col text-center items-center justify-center space-y-12">
-                    <h1 className="text-6xl font-bold">
-                      No results found
-                    </h1>
-                    <div className="relative">
-                      <div className="absolute -inset-1 blur dark:bg-yellow-400 bg-sky-700"/>
-                      <FeedbackButton style="relative w-64 py-2 text-2xl" openModal={openModal}/>
+              <SortableContext
+                  items={blocks}
+                  strategy={rectSortingStrategy}
+              >
+                {searchFilteredData.length > 0 ? searchFilteredData.map((item) => (
+                    <Wrapper key={item.id}
+                             id={item.id}
+                             item={item}
+                             text={text}/>
+                  )) :
+                  <div className="flex flex-col items-center justify-center w-full col-span-full">
+                    <div className="flex flex-col text-center items-center justify-center space-y-12">
+                      <h1 className="text-6xl font-bold">
+                        No results found
+                      </h1>
+                      <div className="relative">
+                        <div className="absolute -inset-1 blur dark:bg-yellow-400 bg-sky-700"/>
+                        <FeedbackButton style="relative w-64 py-2 text-2xl" openModal={openModal}/>
+                      </div>
                     </div>
                   </div>
-                </div>
-              }
-            </SortableContext>
-            <DragOverlay>
-              {activeBlock ? (
-                <LinkBlock
-                  isDragging={true}
-                  isOverlay={true}
-                  item={activeBlock}
-                  text={text}/>
-              ) : null}
-            </DragOverlay>
-          </DndContext>
+                }
+              </SortableContext>
+              <DragOverlay>
+                {activeBlock ? (
+                  <LinkBlock
+                    isDragging={true}
+                    isOverlay={true}
+                    item={activeBlock}
+                    text={text}/>
+                ) : null}
+              </DragOverlay>
+          </DndContext>}
         </div>
       </div>
     );

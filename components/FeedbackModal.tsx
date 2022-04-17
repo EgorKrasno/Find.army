@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {CgClose} from "react-icons/cg";
 import {FaCheck} from "react-icons/fa";
 import {SiSpinrilla} from "react-icons/si";
+import Image from 'next/image'
 
 interface Props {
   isOpen: boolean,
@@ -113,26 +114,30 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
             <div
               className="flex justify-between items-center dark:bg-zinc-800 bg-zinc-200 mt-3 px-5 py-3 rounded-b-sm border-t dark:border-zinc-700 border-zinc-400">
               <div className="flex space-x-3">
-                <div
+                <button
                   onClick={() => setSelectedRating(4)}
+                  tabIndex={0}
                   className={`${selectedRating === 4 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div>&#129321;</div>
-                </div>
-                <div
+                  <Image src='/image/emoji/emoji_1.webp' alt='Very satisfied reaction' width={24} height={24}/>
+                </button>
+                <button
                   onClick={() => setSelectedRating(3)}
+                  tabIndex={0}
                   className={`${selectedRating === 3 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div>&#128515;</div>
-                </div>
-                <div
+                  <Image src='/image/emoji/emoji_2.webp' alt='satisfied reaction' width={24} height={24}/>
+                </button>
+                <button
                   onClick={() => setSelectedRating(2)}
+                  tabIndex={0}
                   className={`${selectedRating === 2 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div>&#128543;</div>
-                </div>
-                <div
+                  <Image src='/image/emoji/emoji_3.webp' alt='ok reaction' width={24} height={24}/>
+                </button>
+                <button
                   onClick={() => setSelectedRating(1)}
+                  tabIndex={0}
                   className={`${selectedRating === 1 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
-                  <div>&#128545;</div>
-                </div>
+                  <Image src='/image/emoji/emoji_4.webp' alt='not satisfied reaction' width={24} height={24}/>
+                </button>
 
               </div>
               <button

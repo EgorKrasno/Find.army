@@ -13,7 +13,8 @@ const DarkModeToggle = ({onClick, darkMode, className, size = 1, transitionSpeed
   };
 
   return (
-    <div
+    <button
+      tabIndex={0}
       onClick={onClick}
       className={"cursor-pointer dark:bg-zinc-900 " + className}>
       <svg viewBox="0 0 24 24" stroke="black" strokeWidth="0.4" width={size + 'em'} height={size + 'em'} strokeLinecap="round">
@@ -38,7 +39,7 @@ const DarkModeToggle = ({onClick, darkMode, className, size = 1, transitionSpeed
             transition: `all ${transitionSpeed}s ease-in-out`,
           }} />
       </svg>
-    </div>
+    </button>
   )
 }
 

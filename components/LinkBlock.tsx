@@ -79,7 +79,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                 {!clicked && <div
                     className={`${!isOverlay && 'transition-all duration-300'} absolute top-3.5 right-3.5 opacity-100 sm:opacity-0 group-hover:opacity-100 ease-in-out z-20 `}>
                   {text.length <= 0 && (
-                    <div
+                    <button
                       {...attributes}
                       {...listeners}
                       tabIndex={-1}
@@ -88,10 +88,10 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                       <BsFillGrid3X2GapFill
                         className={`${isDragging ? 'dark:text-yellow-400 text-blue-500' : 'dark:text-zinc-300 text-zinc-700'} outline-none focus:outline-none transition duration-300 ease-in-out' }`}
                         size={24}/>
-                    </div>
+                    </button>
                   )}
                 </div>}
-                <div
+                <button
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
@@ -104,12 +104,13 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                   {copiedHref.length > 0 && copiedHref === item.href
                     ? 'Copied!'
                     : 'Copy Link'}
-                </div>
+                </button>
 
                 <h2
-                  className={`${!isOverlay && 'transition-all duration-300'} ${isDragging && 'hidden'} w-full h-full text-base opacity-100 sm:opacity-0 ease-in-out
-                    group-hover:opacity-100 font-normal text-zinc-700 dark:text-zinc-300 flex
-                    flex-col-reverse px-3 py-1.5 absolute bottom-0 left-0 rounded-sm`}>
+                  className={`${!isOverlay && 'transition-all duration-300'} ${isDragging && 'hidden'}
+                    w-full h-full text-base opacity-100 sm:opacity-0 ease-in-out pr-12
+                    group-hover:opacity-100 font-normal text-zinc-800 dark:text-zinc-200 flex
+                    flex-col-reverse px-3 py-1.5 absolute bottom-0 left-0 rounded-sm text-sm`}>
                   {item.description}
                 </h2>
 
