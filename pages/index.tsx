@@ -33,6 +33,7 @@ const exploreData = [
     cac: true,
     href: 'https://webmail.apps.mil/mail',
     description: '',
+    tags: ['microsoft', 'outlook'],
   },
   {
     id: '2',
@@ -41,6 +42,7 @@ const exploreData = [
     cac: true,
     href: 'https://dod.teams.microsoft.us',
     description: '',
+    tags: ['microsoft'],
   },
   {
     id: '3',
@@ -67,7 +69,7 @@ const exploreData = [
     cac: false,
     href: 'https://www.tsp.gov/',
     description: 'Thrift Savings Plan',
-    tags: ['401k', 'invest'],
+    tags: ['401k', 'invest', 'pay', 'money', 'stocks'],
   },
   {
     id: '6',
@@ -111,7 +113,6 @@ const exploreData = [
     cac: true,
     href: 'https://login.milsuite.mil/',
     description: '',
-    tags: [],
   },
   {
     id: '11',
@@ -146,7 +147,7 @@ const exploreData = [
     cac: true,
     href: 'https://myorb.hrc.army.mil/',
     description: 'Officer Record Brief',
-    tag: ['Record', 'Officer', 'Brief'],
+    tags: ['Record', 'Officer', 'Brief'],
   },
   {
     id: '15',
@@ -155,7 +156,6 @@ const exploreData = [
     cac: true,
     href: 'https://selfservice.rcms.usar.army.mil/',
     description: '',
-    tag: [],
   },
   {
     id: '16',
@@ -164,7 +164,6 @@ const exploreData = [
     cac: true,
     href: 'https://arngg1.ngb.army.mil/Portal/RibbonMenu.aspx?ProviderName=RecordBriefProvider',
     description: '',
-    tag: [],
   },
   {
     id: '17',
@@ -200,7 +199,7 @@ const exploreData = [
     cac: true,
     href: 'https://www.armymwr.com/#',
     description: '',
-    tag: [],
+    tags: ['family', 'sfrg']
   },
   {
     id: '21',
@@ -209,7 +208,7 @@ const exploreData = [
     cac: true,
     href: 'https://www.militaryonesource.mil/',
     description: '',
-    tags: [],
+    tags: ['family', 'sfrg']
   },
   {
     id: '22',
@@ -218,7 +217,6 @@ const exploreData = [
     cac: false,
     href: 'https://vmis.armyfamilywebportal.com/',
     description: 'Volunteer Management Information System',
-    tags: [],
   },
   {
     id: '23',
@@ -227,6 +225,7 @@ const exploreData = [
     cac: true,
     href: 'https://dtms.army.mil/',
     description: '',
+    tags: ['qualifications', 'weapon']
   },
   {
     id: '24',
@@ -243,7 +242,6 @@ const exploreData = [
     cac: true,
     href: 'https://www.armymaintenance.com/arma',
     description: '',
-    tag: [],
   },
   {
     id: '26',
@@ -252,7 +250,7 @@ const exploreData = [
     cac: true,
     href: 'https://armyfit.army.mil/',
     description: '',
-    tag: ['Health'],
+    tags: ['Health', 'Fitness']
   },
   {
     id: '27',
@@ -261,7 +259,6 @@ const exploreData = [
     cac: true,
     href: 'https://www.hrc.army.mil/',
     description: 'Human Resources Command',
-    tag: [],
   },
   {
     id: '28',
@@ -270,7 +267,7 @@ const exploreData = [
     cac: true,
     href: 'https://icamportal.us.army.mil/',
     description: '',
-    tag: ['Identity', 'Credentials', 'Access'],
+    tags: ['Identity', 'Credentials', 'Access'],
   },
   {
     id: '29',
@@ -279,7 +276,6 @@ const exploreData = [
     cac: true,
     href: 'https://snpro.aesd-w.army.mil/',
     description: 'Army Enterprise Service Desk',
-    tag: [],
   },
   {
     id: '30',
@@ -288,7 +284,6 @@ const exploreData = [
     cac: true,
     href: 'https://evaluations.hrc.army.mil/',
     description: 'HRC Evaluation Entry System',
-    tag: [],
   },
   {
     id: '31',
@@ -297,7 +292,7 @@ const exploreData = [
     cac: false,
     href: 'https://www.sfl-tap.army.mil/',
     description: 'Transition Assistance Program',
-    tag: ['SFL-TAP'],
+    tags: ['SFL-TAP'],
   },
   {
     id: '32',
@@ -306,7 +301,7 @@ const exploreData = [
     cac: false,
     href: 'https://skillbridge.osd.mil/',
     description: '',
-    tag: ['Education', 'Training'],
+    tags: ['Education', 'Training'],
   },
   {
     id: '33',
@@ -315,7 +310,7 @@ const exploreData = [
     cac: true,
     href: 'https://www.dls.army.mil/Army_e-Learning.html',
     description: '',
-    tag: ['Training', 'Certificate', 'Courses'],
+    tags: ['Training', 'Certificate', 'Courses'],
   },
   {
     id: '34',
@@ -324,7 +319,7 @@ const exploreData = [
     cac: true,
     href: 'https://jko.jten.mil/',
     description: 'Joint Knowledge Online',
-    tag: ['Training', 'Certificate', 'Courses'],
+    tags: ['Training', 'Certificate', 'Courses'],
   },
   {
     id: '35',
@@ -333,7 +328,7 @@ const exploreData = [
     nipr: true,
     href: 'https://atrrs.army.mil/',
     description: 'Army Training Requirements and Resource System',
-    tag: ['Training', 'Certificate', 'Courses'],
+    tags: ['Training', 'Certificate', 'Courses'],
   },
   {
     id: '36',
@@ -342,7 +337,7 @@ const exploreData = [
     cac: true,
     href: 'https://www.lms.army.mil/',
     description: 'Army Learning Management System',
-    tag: ['OPSEC', 'Training', 'Certificate', 'Courses'],
+    tags: ['OPSEC', 'Training', 'Certificate', 'Courses'],
   },
   {
     id: '37',
@@ -351,7 +346,7 @@ const exploreData = [
     cac: true,
     href: 'https://www.defensetravel.osd.mil/',
     description: 'Defense Travel System',
-    tag: ['GTC', 'Receipt', 'PCS', 'TDY', 'Voucher', 'Hotel', 'Moving', 'Transportation', 'Travel'],
+    tags: ['GTC', 'Receipt', 'PCS', 'TDY', 'Voucher', 'Hotel', 'Moving', 'Transportation', 'Travel', 'Move'],
   },
   {
     id: '38',
@@ -360,7 +355,7 @@ const exploreData = [
     cac: true,
     href: 'https://move.mil/',
     description: 'Defense Travel System',
-    tag: ['PCS', 'TDY', 'Voucher', 'Hotel', 'Moving', 'Transportation', 'Travel'],
+    tags: ['PCS', 'TDY', 'Voucher', 'Hotel', 'Moving', 'Transportation', 'Travel'],
   },
   {
     id: '39',
@@ -369,7 +364,7 @@ const exploreData = [
     cac: true,
     href: 'https://trips.safety.army.mil/',
     description: 'Travel Risk Planning System',
-    tag: [],
+    tags: ['PCS', 'Move', 'Travel'],
   },
   {
     id: '40',
@@ -378,7 +373,7 @@ const exploreData = [
     cac: false,
     href: 'https://armypubs.army.mil/',
     description: 'Army Publication Directorate',
-    tag: [],
+    tags: ['pdf', 'education'],
   },
   {
     id: '41',
@@ -387,7 +382,7 @@ const exploreData = [
     cac: false,
     href: 'http://www.cac.mil/',
     description: 'Army Publication Directorate',
-    tag: [],
+    tags: [],
   },
   {
     id: '42',
@@ -396,7 +391,7 @@ const exploreData = [
     cac: false,
     href: 'https://atn.army.mil/',
     description: '',
-    tag: ['ATN'],
+    tags: ['ATN', 'education'],
   },
   {
     id: '43',
@@ -405,7 +400,7 @@ const exploreData = [
     cac: false,
     href: 'https://atn.army.mil/mytraining/',
     description: 'View DTMS, Height/Weight, APFT, ACFT, and weapon records',
-    tag: [],
+    tags: [],
   },
   {
     id: '200',
@@ -455,7 +450,7 @@ const exploreData = [
 ];
 
 const fuse = new Fuse(exploreData, {
-  keys: ['title', 'tags'],
+  keys: ['title', 'tags', 'description'],
   threshold: 0.3,
 });
 
