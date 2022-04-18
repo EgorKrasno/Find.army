@@ -31,12 +31,15 @@ const ExploreSearch = ({text, setText}: Props) => {
           className="rounded-sm text-lg transition ease-in-out duration-300 focus:border-sky-700 dark:focus:border-yellow-400 hover:border-sky-600 dark:hover:border-yellow-400/40 bg-zinc-200 dark:bg-zinc-800 border border-zinc-400 text-black dark:text-slate-50 dark:border-zinc-600 outline-none py-2.5 pl-14 pr-6 w-full"/>
 
         {text.length > 0 &&
-            <div className="flex top-1/2 right-4 absolute transform -translate-y-1/2 space-x-2">
+            <button
+                data-testid='clear-search-button'
+                aria-label="Clear search"
+                onClick={clearText}
+                className="flex top-1/2 right-4 absolute transform -translate-y-1/2 space-x-2">
                 <IoClose
-                    onClick={clearText}
                     size={28}
-                    className=" cursor-pointer  text-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-50 text-zinc-500 dark:text-zinc-400 transition duration-300 ease-in-out"/>
-            </div>}
+                    className=" cursor-pointer text-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-50 text-zinc-500 dark:text-zinc-400 transition duration-300 ease-in-out"/>
+            </button>}
 
 
       </div>

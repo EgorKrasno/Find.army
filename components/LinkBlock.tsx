@@ -39,6 +39,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
     !(isDragging && !isOverlay) ?
       <>
         <a
+          data-testid='link-block'
           onClick={() => {
             window.umami.trackEvent(item.title, 'Visit')
           }}
