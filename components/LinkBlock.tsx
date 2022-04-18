@@ -65,22 +65,6 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                   rounded-sm bg-no-repeat bg-zinc-200 dark:bg-zinc-800 flex justify-center items-center`}>
                   {item.icon}
                 </div>
-                <div
-                    className={`${!isOverlay && 'transition-all duration-300'} absolute top-3.5 right-3.5 opacity-100 sm:opacity-0 group-hover:opacity-100 ease-in-out z-20 `}>
-                  {text.length <= 0 && (
-                    <button
-                      aria-label="Drag to reorder"
-                      {...attributes}
-                      {...listeners}
-                      tabIndex={-1}
-                      onClick={(e) => e.stopPropagation()}
-                      className={`${!isOverlay && 'transition duration-300'} ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}  outline-none focus:outline-none dark:hover:bg-zinc-700 hover:bg-zinc-300 rounded-sm px-2 py-1 flex justify-center items-center ease-in-out`}>
-                      <BsFillGrid3X2GapFill
-                        className={`${isDragging ? 'dark:text-yellow-400 text-blue-500' : 'dark:text-zinc-300 text-zinc-700'} outline-none focus:outline-none transition duration-300 ease-in-out' }`}
-                        size={24}/>
-                    </button>
-                  )}
-                </div>
                 <button
                   aria-label='Copy link to clipboard'
                   onClick={(e) => {
@@ -96,6 +80,22 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                     ? 'Copied!'
                     : 'Copy Link'}
                 </button>
+                <div
+                    className={`${!isOverlay && 'transition-all duration-300'} absolute top-3.5 right-3.5 opacity-100 ease-in-out z-20 `}>
+                  {text.length <= 0 && (
+                    <button
+                      aria-label="Drag to reorder"
+                      {...attributes}
+                      {...listeners}
+                      tabIndex={0}
+                      onClick={(e) => e.stopPropagation()}
+                      className={`${!isOverlay && 'transition duration-300'} ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} focus:opacity-100 sm:opacity-0 dark:focus:ring-yellow-400 focus:ring focus:outline-none dark:focus:ring-offset-zinc-800 focus:ring-zinc-900 group-hover:opacity-100 dark:hover:bg-zinc-700 hover:bg-zinc-300 rounded-sm px-2 py-1 flex justify-center items-center ease-in-out`}>
+                      <BsFillGrid3X2GapFill
+                        className={`${isDragging ? 'dark:text-yellow-400 text-blue-500' : 'dark:text-zinc-300 text-zinc-700'} outline-none focus:outline-none transition duration-300 ease-in-out' }`}
+                        size={24}/>
+                    </button>
+                  )}
+                </div>
 
                 <h2
                   className={`${!isOverlay && 'transition-all duration-300'} ${isDragging && 'hidden'}
