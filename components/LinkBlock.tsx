@@ -48,16 +48,16 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
           target="_blank" rel="noreferrer noopener"
         >
           <div
-            className={`${isDragging ? 'z-50' : 'z-10'} group col-span-4 cursor-pointer `}
+            className={`${isDragging ? 'z-50' : 'z-10'} col-span-4 cursor-pointer `}
           >
             <div className="relative w-full h-full grid grid-rows-explore-tabs">
               <div
                 tabIndex={0}
-                className={`${!isOverlay && 'transition duration-300'} ${!isChildHovered && 'sm:group-hover:ring'}
-                relative aspect-h-4 aspect-w-3 rounded-sm 
-                dark:group-hover:ring-yellow-400 h-full
-                group-hover:ring-zinc-900 ring-offset-zinc-200
-                dark:ring-offset-zinc-900 ring-offset-4 ease-in-out
+                className={`${!isOverlay && 'transition duration-300'} ${!isChildHovered && 'sm:hover:ring'}
+                relative aspect-h-4 aspect-w-3 rounded-sm group
+                dark:hover:ring-yellow-400 h-full
+                hover:ring-zinc-900 ring-offset-zinc-200
+                dark:ring-offset-zinc-900 ring-offset-4 ease-in-out 
                 dark:focus:ring-yellow-400 focus:ring focus:outline-none dark:focus:ring-offset-zinc-800 focus:ring-sky-700
                 `}>
                 <div
@@ -99,7 +99,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
 
                 <h2
                   className={`${!isOverlay && 'transition-all duration-300'} ${isDragging && 'hidden'}
-                    w-full h-full text-base opacity-100 sm:opacity-0 ease-in-out pr-12
+                    w-full h-full text-base opacity-100 sm:opacity-0 ease-in-out pr-12 group-focus:opacity-100
                     group-hover:opacity-100 font-normal text-zinc-800 dark:text-zinc-300 flex
                     flex-col-reverse px-3 py-1.5 absolute bottom-0 left-0 rounded-sm text-sm`}>
                   {item.description}
