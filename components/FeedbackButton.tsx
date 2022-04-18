@@ -5,6 +5,7 @@ interface Props {
 
 const FeedbackButton = ({openModal, style}: Props) => {
   return (<button
+    aria-label="Feedback"
     onClick={openModal}
     tabIndex={0}
     className={`${style} dark:bg-zinc-900 bg-zinc-50 font-semibold rounded-sm py-2 px-4 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none`}

@@ -80,6 +80,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                     className={`${!isOverlay && 'transition-all duration-300'} absolute top-3.5 right-3.5 opacity-100 sm:opacity-0 group-hover:opacity-100 ease-in-out z-20 `}>
                   {text.length <= 0 && (
                     <button
+                      aria-label="Drag to reorder"
                       {...attributes}
                       {...listeners}
                       tabIndex={-1}
@@ -92,6 +93,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                   )}
                 </div>}
                 <button
+                  aria-label='Copy link to clipboard'
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
@@ -122,8 +124,8 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                   </>
                   }
                   {item.nipr && <>
-                    <FaLock className="text-zinc-900 dark:text-red-400" size={24}/>
-                    <span className="text-zinc-700 dark:text-zinc-300 text-xs">NIPR</span>
+                      <FaLock className="text-zinc-900 dark:text-red-400" size={24}/>
+                      <span className="text-zinc-700 dark:text-zinc-300 text-xs">NIPR</span>
                   </>}
 
                 </div>

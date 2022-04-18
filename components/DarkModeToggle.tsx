@@ -14,6 +14,7 @@ const DarkModeToggle = ({onClick, darkMode, className, size = 1, transitionSpeed
 
   return (
     <button
+      aria-label={darkMode ? 'Turn on light mode' : 'Turn on dark mode'}
       tabIndex={0}
       onClick={onClick}
       className={"cursor-pointer dark:bg-zinc-900 " + className}>
