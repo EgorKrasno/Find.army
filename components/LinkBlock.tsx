@@ -34,7 +34,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
     return () => {
       window.removeEventListener('visibilitychange', handleWindowClose);
     };
-  });
+  }, []);
 
   const copyToClipboard = (href: string) => {
     navigator.clipboard.writeText(href).then((r) => {
@@ -109,7 +109,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                 <h2
                   className={`${!isOverlay && 'transition-all duration-300'} ${isDragging && 'hidden'}
                     w-full h-full text-base opacity-100 sm:opacity-0 ease-in-out pr-12
-                    group-hover:opacity-100 font-normal text-zinc-800 dark:text-zinc-200 flex
+                    group-hover:opacity-100 font-normal text-zinc-800 dark:text-zinc-300 flex
                     flex-col-reverse px-3 py-1.5 absolute bottom-0 left-0 rounded-sm text-sm`}>
                   {item.description}
                 </h2>

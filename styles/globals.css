@@ -66,34 +66,22 @@ html, body {
     .background-dark {
         height: 100%;
         margin: 0;
-        background-image: radial-gradient(ellipse at top left, rgba(24, 24, 27, 0.8), transparent),
-        radial-gradient(ellipse at bottom left, rgba(24, 24, 27, 0.8), transparent),
-        radial-gradient(ellipse at top right, rgba(24, 24, 27, 0.8), transparent),
-        radial-gradient(ellipse at bottom right, rgba(24, 24, 27, 0.8), transparent),
+        background-image: linear-gradient(to bottom, rgba(24, 24, 27, 0.9), rgba(24, 24, 27, 0.9)),
         url(/pattern-dark.png);
     }
 
     .background-light {
         min-height: 100vh;
         margin: 0;
-        background-image: radial-gradient(ellipse at top left, rgb(247, 250, 252, 0.8), transparent),
-        radial-gradient(ellipse at bottom left, rgba(247, 250, 252, 0.8), transparent),
-        radial-gradient(ellipse at top right, rgba(247, 250, 252, 0.8), transparent),
-        radial-gradient(ellipse at bottom right, rgba(247, 250, 252, 0.8), transparent),
+        background-image: linear-gradient(to bottom, rgba(247, 250, 252, 0.9), rgba(247, 250, 252, 0.9)),
         url(/pattern.png);
     }
 
-    .glow-yellow-right {
-        background-image: radial-gradient(at 15% 5%, #FDE047 0, transparent 26%),
-        radial-gradient(at 50% 50%, #FDE047 0, transparent 36%),
-        radial-gradient(at 90% 90%, #FDE047 0, transparent 28%);
-        filter: blur(120px)
+    .svg-yellow-force * {
+        stroke: rgb(253, 224, 71) !important;
     }
 
-    .svg-yellow-force *{
-        stroke: rgb(253,224,71) !important;
-    }
-    .svg-sky-force *{
-        stroke: rgb(3,105,161) !important;
+    .svg-sky-force * {
+        stroke: rgb(3, 105, 161) !important;
     }
 }

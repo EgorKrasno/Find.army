@@ -13,6 +13,9 @@ module.exports = {
                 'posts': '225px 1fr',
                 'explore-tabs': '210px 1fr',
             },
+            screens: {
+                'wide': '1920px',
+            },
         },
     },
     plugins: [],

@@ -5,12 +5,11 @@ import Head from "next/head";
 import ThemeProvider from "../components/ThemeProvider";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import {useRouter} from "next/router";
 import FeedbackModal from "../components/FeedbackModal";
 import Script from 'next/script'
+import Image from 'next/image'
 
 const MyApp = ({Component, pageProps}: AppProps) => {
-  const router = useRouter()
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
@@ -36,12 +35,13 @@ const MyApp = ({Component, pageProps}: AppProps) => {
       </Head>
       <div
         className="relative flex flex-col dark:background-dark background-light min-h-screen antialiased font-purista transition ease-in-out">
-        <div className="h-[350px] w-[550px] absolute glow-yellow-right absolute top-20 right-6"/>
+        <div className="absolute pointer-events-none top-0 right-0 w-[1260px] h-[1000px] wide:w-[1700px] wide:h-[1200px]">
+          <Image alt='background glow' src={"/glow.png"} layout='fill'/>
+        </div>
         <Nav openModal={openModal}/>
         <main className="flex-1">
           <Component
             {...pageProps}
-            key={router.asPath}
             openModal={openModal}
           />
         </main>
