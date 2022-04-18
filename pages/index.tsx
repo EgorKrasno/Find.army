@@ -18,7 +18,15 @@ import {MdFamilyRestroom} from "react-icons/md";
 import {GiClothes, GiComputing, GiHealthNormal} from "react-icons/gi";
 import {BsFillBriefcaseFill} from "react-icons/bs";
 import {HiIdentification, HiOutlinePaperClip} from "react-icons/hi";
-import {FaBook, FaChartBar, FaFilePdf, FaGraduationCap, FaHammer, FaMoneyBill, FaPlaneDeparture} from "react-icons/fa";
+import {
+  FaBook,
+  FaChartBar,
+  FaFilePdf,
+  FaGraduationCap,
+  FaHammer,
+  FaPlaneDeparture,
+  FaRegMoneyBillAlt
+} from "react-icons/fa";
 import {SiMicrosoftoutlook, SiMicrosoftteams} from "react-icons/si";
 import FeedbackButton from "../components/FeedbackButton";
 import {IoFitness} from "react-icons/io5";
@@ -47,7 +55,7 @@ const exploreData = [
   {
     id: '3',
     title: 'MyPay',
-    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    icon: <FaRegMoneyBillAlt className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://mypay.dfas.mil/#/',
     description: '',
@@ -56,7 +64,7 @@ const exploreData = [
   {
     id: '4',
     title: 'IPPS-A',
-    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    icon: <FaRegMoneyBillAlt className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://hr.ippsa.csd.disa.mil/',
     description: 'Integrated Personnel and Payment System',
@@ -65,7 +73,7 @@ const exploreData = [
   {
     id: '5',
     title: 'TSP',
-    icon: <FaMoneyBill className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    icon: <FaRegMoneyBillAlt className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: false,
     href: 'https://www.tsp.gov/',
     description: 'Thrift Savings Plan',
@@ -198,7 +206,7 @@ const exploreData = [
     icon: <MdFamilyRestroom className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
     href: 'https://www.armymwr.com/#',
-    description: '',
+    description: 'Morale, Welfare and Recreation',
     tags: ['family', 'sfrg']
   },
   {

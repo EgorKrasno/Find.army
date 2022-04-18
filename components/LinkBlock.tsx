@@ -25,16 +25,6 @@ interface Props {
 const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: Props) => {
   const [copiedHref, setCopiedHref] = useState('');
   const [isChildHovered, setIsChildHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
-
-  const handleWindowClose = () => setClicked(false);
-
-  useEffect(() => {
-    window.addEventListener('visibilitychange', handleWindowClose);
-    return () => {
-      window.removeEventListener('visibilitychange', handleWindowClose);
-    };
-  }, []);
 
   const copyToClipboard = (href: string) => {
     navigator.clipboard.writeText(href).then((r) => {
@@ -51,10 +41,11 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
         <a
           onClick={() => {
             window.umami.trackEvent(item.title, 'Visit')
-            setClicked(true)
           }}
           href={item.href}
-          tabIndex={-1}>
+          tabIndex={-1}
+          target="_blank" rel="noreferrer noopener"
+        >
           <div
             className={`${isDragging ? 'z-50' : 'z-10'} group col-span-4 cursor-pointer `}
           >
@@ -71,12 +62,9 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                 <div
                   className={`${isDragging ? 'shadow-2xl dark:shadow-yellow-400/50 shadow-zinc-900/80' : 'shadow-md dark:shadow-none'} block w-full h-full bg-cover bg-center dark:border-zinc-700 border border-zinc-400 transition-all duration-300 ease-in-out
                   rounded-sm bg-no-repeat bg-zinc-200 dark:bg-zinc-800 flex justify-center items-center`}>
-                  {clicked ?
-                    <div className="flex items-center flex-col space">
-                      <CgSpinnerTwo className="dark:text-red-500 text-zinc-600 animate-spin" size={128}/>
-                    </div> : item.icon}
+                  {item.icon}
                 </div>
-                {!clicked && <div
+                <div
                     className={`${!isOverlay && 'transition-all duration-300'} absolute top-3.5 right-3.5 opacity-100 sm:opacity-0 group-hover:opacity-100 ease-in-out z-20 `}>
                   {text.length <= 0 && (
                     <button
@@ -91,7 +79,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                         size={24}/>
                     </button>
                   )}
-                </div>}
+                </div>
                 <button
                   aria-label='Copy link to clipboard'
                   onClick={(e) => {
