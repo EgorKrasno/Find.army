@@ -3,22 +3,27 @@ import Home from '../index';
 import '@testing-library/jest-dom'
 
 describe('Home Page', () => {
-  it('renders first and last block', () => {
-    render(<Home />)
+  it('Renders navbar on Home Page', () => {
+    render(<Home/>)
+    expect(screen.getByText('Find.Army')).toBeInTheDocument()
+  })
+
+  it('Renders first and last block', () => {
+    render(<Home/>)
 
     expect(screen.getByText('Email 365')).toBeInTheDocument();
     expect(screen.getByText('Recommendation for Award Form')).toBeInTheDocument();
   });
 
-  it('renders all blocks', () => {
-    render(<Home />)
+  it('Renders all blocks', () => {
+    render(<Home/>)
 
     const blocks = screen.getAllByTestId('link-block');
     expect(blocks.length).toBe(48);
   });
 
-  it('search bar narrows down search', () => {
-    render(<Home />)
+  it('Search bar narrows down search', () => {
+    render(<Home/>)
 
     const searchInput = screen.getByPlaceholderText('Search');
     fireEvent.change(searchInput, {target: {value: 'tsp'}});
@@ -27,8 +32,8 @@ describe('Home Page', () => {
     expect(screen.getAllByTestId('link-block').length).toBe(1);
   });
 
-  it('clicking clear search shows all blocks', () => {
-    render(<Home />)
+  it('Clicking clear search shows all blocks', () => {
+    render(<Home/>)
 
     const searchInput = screen.getByPlaceholderText('Search');
     fireEvent.change(searchInput, {target: {value: 'nothingmatches'}});
@@ -40,8 +45,8 @@ describe('Home Page', () => {
     expect(screen.getAllByTestId('link-block').length).toBe(48);
   });
 
-  it('bad search displays no results page with feedback button', () => {
-    render(<Home />)
+  it('Bad search displays no results page with feedback button', () => {
+    render(<Home/>)
 
     const searchInput = screen.getByPlaceholderText('Search');
     fireEvent.change(searchInput, {target: {value: 'nothingmatches'}});
@@ -49,5 +54,16 @@ describe('Home Page', () => {
     expect(screen.getByText('No results found')).toBeInTheDocument();
     expect(screen.getByText('Make a suggestion')).toBeInTheDocument();
     expect(screen.queryAllByTestId('link-block').length).toBe(0);
+  });
+
+  it('Clicking no results page feedback button shows feedback modal', () => {
+    render(<Home/>)
+
+    const searchInput = screen.getByPlaceholderText('Search');
+    fireEvent.change(searchInput, {target: {value: 'nothingmatches'}});
+    const feedbackButton = screen.getByText('Make a suggestion');
+    fireEvent.click(feedbackButton);
+
+    expect(screen.getByText('Submit')).toBeInTheDocument();
   });
 })

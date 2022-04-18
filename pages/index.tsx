@@ -67,21 +67,19 @@ const exploreData = [
   },
   {
     id: '4',
-    title: 'IPPS-A',
-    icon: <FaRegMoneyBillAlt className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    title: 'iPERMS',
+    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
-    href: 'https://hr.ippsa.csd.disa.mil/',
-    description: 'Integrated Personnel and Payment System',
-    tags: ['pay', 'money'],
+    href: 'https://iperms.hrc.army.mil/',
+    description: '',
   },
   {
     id: '5',
-    title: 'TSP',
-    icon: <FaRegMoneyBillAlt className='dark:text-yellow-300 text-sky-700' size={112}/>,
-    cac: false,
-    href: 'https://www.tsp.gov/',
-    description: 'Thrift Savings Plan',
-    tags: ['401k', 'invest', 'pay', 'money', 'stocks'],
+    title: 'Cyber Awareness Challenge',
+    icon: <GiComputing className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: true,
+    href: 'https://cs.signal.army.mil/',
+    description: '',
   },
   {
     id: '6',
@@ -103,11 +101,12 @@ const exploreData = [
   },
   {
     id: '8',
-    title: 'Cyber Awareness Challenge',
-    icon: <GiComputing className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    title: 'RFO',
+    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
-    href: 'https://cs.signal.army.mil/',
-    description: '',
+    href: 'https://aim.hrc.army.mil/',
+    description: 'Request for Orders',
+    tags: ['PCS', 'HRC'],
   },
   {
     id: '9',
@@ -128,20 +127,21 @@ const exploreData = [
   },
   {
     id: '11',
-    title: 'iPERMS',
-    icon: <HiOutlinePaperClip className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    title: 'TRICARE',
+    icon: <GiHealthNormal className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
-    href: 'https://iperms.hrc.army.mil/',
+    href: 'https://tricare.mil/',
     description: '',
+    tags: ['medical', 'health', 'dental', 'vision', 'insurance'],
   },
   {
     id: '12',
-    title: 'RFO',
-    icon: <BsFillBriefcaseFill className='dark:text-yellow-300 text-sky-700' size={112}/>,
-    cac: true,
-    href: 'https://aim.hrc.army.mil/',
-    description: 'Request for Orders',
-    tags: ['PCS', 'HRC'],
+    title: 'TSP',
+    icon: <FaRegMoneyBillAlt className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    cac: false,
+    href: 'https://www.tsp.gov/',
+    description: 'Thrift Savings Plan',
+    tags: ['401k', 'invest', 'pay', 'money', 'stocks'],
   },
   {
     id: '13',
@@ -197,12 +197,12 @@ const exploreData = [
   },
   {
     id: '19',
-    title: 'TRICARE',
-    icon: <GiHealthNormal className='dark:text-yellow-300 text-sky-700' size={112}/>,
+    title: 'IPPS-A',
+    icon: <FaRegMoneyBillAlt className='dark:text-yellow-300 text-sky-700' size={112}/>,
     cac: true,
-    href: 'https://tricare.mil/',
-    description: '',
-    tags: ['medical', 'health', 'dental', 'vision', 'insurance'],
+    href: 'https://hr.ippsa.csd.disa.mil/',
+    description: 'Integrated Personnel and Payment System',
+    tags: ['pay', 'money'],
   },
   {
     id: '20',
@@ -471,6 +471,7 @@ const Home = () => {
     const [blocks, setBlocks] = useState<Item[]>([]);
     const [activeBlock, setActiveBlock] = useState<any>();
     const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+
     const openModal = () => setIsFeedbackModalOpen(true);
 
     const sensors = useSensors(
@@ -533,12 +534,12 @@ const Home = () => {
 
     return (
       <div
-        className="relative flex flex-col dark:background-dark background-light min-h-screen antialiased font-purista transition ease-in-out">
+        className="relative flex flex-col dark:background-dark background-light min-h-screen antialiased font-purista transition ease-in-out overflow-hidden">
         <div className="absolute pointer-events-none top-0 right-0 w-[1260px] h-[1000px] wide:w-[1700px] wide:h-[1200px]">
           <Image alt='background glow' src='/glow.png' layout='fill'/>
         </div>
         <Nav openModal={openModal}/>
-        <div className="mx-6 sm:mx-12 mt-16">
+        <div className="flex-1 mx-6 sm:mx-12 mt-16">
           <ExploreSearch
             text={text}
             setText={setText}
@@ -567,7 +568,8 @@ const Home = () => {
                         </h1>
                         <div className="relative">
                           <div className="absolute -inset-1 blur dark:bg-yellow-400 bg-sky-700"/>
-                          <FeedbackButton text='Make a suggestion' style="relative w-64 py-2 text-2xl" openModal={openModal}/>
+                          <FeedbackButton text='Make a suggestion' style="relative w-64 py-2 text-2xl"
+                                          openModal={openModal}/>
                         </div>
                       </div>
                     </div>
