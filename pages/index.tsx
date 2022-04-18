@@ -32,6 +32,10 @@ import FeedbackButton from "../components/FeedbackButton";
 import {IoFitness} from "react-icons/io5";
 import {RiComputerLine, RiCustomerService2Fill} from "react-icons/ri";
 import {GrCertificate} from "react-icons/gr";
+import Image from "next/image";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import FeedbackModal from "../components/FeedbackModal";
 
 const exploreData = [
   {
@@ -462,14 +466,12 @@ const fuse = new Fuse(exploreData, {
   threshold: 0.3,
 });
 
-interface Props {
-  openModal: () => void;
-}
-
-const Home = ({openModal}: Props) => {
+const Home = () => {
     const [text, setText] = useState('');
     const [blocks, setBlocks] = useState<Item[]>([]);
     const [activeBlock, setActiveBlock] = useState<any>();
+    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+    const openModal = () => setIsFeedbackModalOpen(true);
 
     const sensors = useSensors(
       useSensor(MouseSensor),
@@ -530,52 +532,63 @@ const Home = ({openModal}: Props) => {
     }
 
     return (
-      <div className="mx-6 sm:mx-12 mt-16">
-        <ExploreSearch
-          text={text}
-          setText={setText}
-        />
-        <div className="grid grid-cols-4 gap-x-10 md:grid-cols-8 lg:grid-cols-12 lg:gap-x-16 mx-auto max-w-7xl">
-          {blocks.length > 0 && <DndContext
-              sensors={sensors}
-              collisionDetection={closestCenter}
-              onDragEnd={handleDragEnd}
-              onDragStart={handleDragStart}
-          >
-              <SortableContext
-                  items={blocks}
-                  strategy={rectSortingStrategy}
-              >
-                {searchFilteredData.length > 0 ? searchFilteredData.map((item) => (
-                    <Wrapper key={item.id}
-                             id={item.id}
-                             item={item}
-                             text={text}/>
-                  )) :
-                  <div className="flex flex-col items-center justify-center w-full col-span-full">
-                    <div className="flex flex-col text-center items-center justify-center space-y-12">
-                      <h1 className="text-6xl font-bold">
-                        No results found
-                      </h1>
-                      <div className="relative">
-                        <div className="absolute -inset-1 blur dark:bg-yellow-400 bg-sky-700"/>
-                        <FeedbackButton style="relative w-64 py-2 text-2xl" openModal={openModal}/>
+      <div
+        className="relative flex flex-col dark:background-dark background-light min-h-screen antialiased font-purista transition ease-in-out">
+        <div className="absolute pointer-events-none top-0 right-0 w-[1260px] h-[1000px] wide:w-[1700px] wide:h-[1200px]">
+          <Image alt='background glow' src='/glow.png' layout='fill'/>
+        </div>
+        <Nav openModal={openModal}/>
+        <div className="mx-6 sm:mx-12 mt-16">
+          <ExploreSearch
+            text={text}
+            setText={setText}
+          />
+          <div className="grid grid-cols-4 gap-x-10 md:grid-cols-8 lg:grid-cols-12 lg:gap-x-16 mx-auto max-w-7xl">
+            {blocks.length > 0 && <DndContext
+                sensors={sensors}
+                collisionDetection={closestCenter}
+                onDragEnd={handleDragEnd}
+                onDragStart={handleDragStart}
+            >
+                <SortableContext
+                    items={blocks}
+                    strategy={rectSortingStrategy}
+                >
+                  {searchFilteredData.length > 0 ? searchFilteredData.map((item) => (
+                      <Wrapper key={item.id}
+                               id={item.id}
+                               item={item}
+                               text={text}/>
+                    )) :
+                    <div className="flex flex-col items-center justify-center w-full col-span-full">
+                      <div className="flex flex-col text-center items-center justify-center space-y-12">
+                        <h1 className="text-6xl font-bold">
+                          No results found
+                        </h1>
+                        <div className="relative">
+                          <div className="absolute -inset-1 blur dark:bg-yellow-400 bg-sky-700"/>
+                          <FeedbackButton text='Make a suggestion' style="relative w-64 py-2 text-2xl" openModal={openModal}/>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                }
-              </SortableContext>
-              <DragOverlay>
-                {activeBlock ? (
-                  <LinkBlock
-                    isDragging={true}
-                    isOverlay={true}
-                    item={activeBlock}
-                    text={text}/>
-                ) : null}
-              </DragOverlay>
-          </DndContext>}
+                  }
+                </SortableContext>
+                <DragOverlay>
+                  {activeBlock ? (
+                    <LinkBlock
+                      isDragging={true}
+                      isOverlay={true}
+                      item={activeBlock}
+                      text={text}/>
+                  ) : null}
+                </DragOverlay>
+            </DndContext>}
+          </div>
         </div>
+        <Footer/>
+        <FeedbackModal
+          isOpen={isFeedbackModalOpen}
+          closeModal={() => setIsFeedbackModalOpen(false)}/>
       </div>
     );
   }

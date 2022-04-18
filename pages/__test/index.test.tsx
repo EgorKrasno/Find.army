@@ -4,21 +4,21 @@ import '@testing-library/jest-dom'
 
 describe('Home Page', () => {
   it('renders first and last block', () => {
-    render(<Home openModal={jest.fn()}/>)
+    render(<Home />)
 
     expect(screen.getByText('Email 365')).toBeInTheDocument();
     expect(screen.getByText('Recommendation for Award Form')).toBeInTheDocument();
   });
 
   it('renders all blocks', () => {
-    render(<Home openModal={jest.fn()}/>)
+    render(<Home />)
 
     const blocks = screen.getAllByTestId('link-block');
     expect(blocks.length).toBe(48);
   });
 
   it('search bar narrows down search', () => {
-    render(<Home openModal={jest.fn()}/>)
+    render(<Home />)
 
     const searchInput = screen.getByPlaceholderText('Search');
     fireEvent.change(searchInput, {target: {value: 'tsp'}});
@@ -28,7 +28,7 @@ describe('Home Page', () => {
   });
 
   it('clicking clear search shows all blocks', () => {
-    render(<Home openModal={jest.fn()}/>)
+    render(<Home />)
 
     const searchInput = screen.getByPlaceholderText('Search');
     fireEvent.change(searchInput, {target: {value: 'nothingmatches'}});
@@ -41,13 +41,13 @@ describe('Home Page', () => {
   });
 
   it('bad search displays no results page with feedback button', () => {
-    render(<Home openModal={jest.fn()}/>)
+    render(<Home />)
 
     const searchInput = screen.getByPlaceholderText('Search');
     fireEvent.change(searchInput, {target: {value: 'nothingmatches'}});
 
     expect(screen.getByText('No results found')).toBeInTheDocument();
-    expect(screen.getByText('Feedback')).toBeInTheDocument();
+    expect(screen.getByText('Make a suggestion')).toBeInTheDocument();
     expect(screen.queryAllByTestId('link-block').length).toBe(0);
   });
 })

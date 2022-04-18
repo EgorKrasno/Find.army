@@ -58,7 +58,7 @@ const Nav = ({openModal}: Props) => {
 
             </div>
             <div className="flex items-center space-x-4 sm:space-x-6 ">
-              <FeedbackButton openModal={openModal}/>
+              <FeedbackButton text="Feedback" openModal={openModal}/>
               <DarkModeToggle
                 className="rounded-sm p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none"
                 onClick={toggleDarkMode}
