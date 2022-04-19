@@ -1,5 +1,5 @@
 import {fireEvent, render, screen} from '@testing-library/react'
-import Home from '../index';
+import Home from '../pages/index';
 import '@testing-library/jest-dom'
 
 describe('Home Page', () => {
