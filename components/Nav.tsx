@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import {GiMagnifyingGlass} from "react-icons/gi";
 import FeedbackButton from "./FeedbackButton";
+import {FaGithub} from "react-icons/fa6";
 
 interface Props {
   openModal: () => void;
@@ -48,7 +48,6 @@ const Nav = ({openModal}: Props) => {
                 space-x-4 sm:space-x-8 w-full box-border flex flex-row justify-between md:justify-start">
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center">
-              {/*<Link href="/" passHref>*/}
               <div className="flex items-center space-x-2 sm:space-x-5">
                 <GiMagnifyingGlass
                   className="text-sky-700 dark:text-yellow-400 w-[42px] h-[42px] sm:w-[52px] sm:h-[52px]"/>
@@ -58,7 +57,6 @@ const Nav = ({openModal}: Props) => {
                   <h2 className="text-xs sm:text-sm dark:text-zinc-200 text-zinc-900 font-semibold">The Better AKO</h2>
                 </div>
               </div>
-              {/*</Link>*/}
 
             </div>
             <div className="flex items-center space-x-2 sm:space-x-6 ">
@@ -68,6 +66,14 @@ const Nav = ({openModal}: Props) => {
                 onClick={toggleDarkMode}
                 size={1.4}
                 darkMode={isDarkModeActive}/>
+              <a
+                href='https://github.com/EgorKrasno/Find.army'
+                target="_blank">
+                <button
+                  className='rounded-sm p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none'>
+                  <FaGithub size={24}/>
+                </button>
+              </a>
             </div>
           </div>
         </nav>
