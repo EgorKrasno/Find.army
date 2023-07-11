@@ -48,16 +48,17 @@ const Nav = ({openModal}: Props) => {
                 space-x-4 sm:space-x-8 w-full box-border flex flex-row justify-between md:justify-start">
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center">
-              <Link href="/" passHref>
-                <div className="flex items-center space-x-2 sm:space-x-5">
-                  <GiMagnifyingGlass className="text-sky-700 dark:text-yellow-400 w-[42px] h-[42px] sm:w-[52px] sm:h-[52px]"/>
-                  <div>
-                    <h1
-                      className="dark:text-zinc-50 text-zinc-900 text-2xl sm:text-4xl font-bold tracking-wide">Find.Army</h1>
-                    <h2 className="text-xs sm:text-sm dark:text-zinc-200 text-zinc-900 font-semibold">The Better AKO</h2>
-                  </div>
+              {/*<Link href="/" passHref>*/}
+              <div className="flex items-center space-x-2 sm:space-x-5">
+                <GiMagnifyingGlass
+                  className="text-sky-700 dark:text-yellow-400 w-[42px] h-[42px] sm:w-[52px] sm:h-[52px]"/>
+                <div>
+                  <h1
+                    className="dark:text-zinc-50 text-zinc-900 text-2xl sm:text-4xl font-bold tracking-wide">Find.Army</h1>
+                  <h2 className="text-xs sm:text-sm dark:text-zinc-200 text-zinc-900 font-semibold">The Better AKO</h2>
                 </div>
-              </Link>
+              </div>
+              {/*</Link>*/}
 
             </div>
             <div className="flex items-center space-x-2 sm:space-x-6 ">
