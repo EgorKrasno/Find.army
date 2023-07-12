@@ -28,7 +28,7 @@ const ExploreSearch = ({text, setText}: Props) => {
           ref={searchBarRef}
           placeholder='Search'
           autoFocus={true}
-          className="rounded-sm text-lg transition ease-in-out duration-300 focus:border-sky-700 dark:focus:border-yellow-400 hover:border-sky-600 dark:hover:border-yellow-400/40 bg-zinc-200 dark:bg-zinc-800 border border-zinc-400 text-black dark:text-slate-50 dark:border-zinc-600 outline-none py-2.5 pl-14 pr-6 w-full"/>
+          className="rounded-sm text-lg transition ease-in-out duration-300 focus:border-sky-700 dark:focus:border-yellow-400 hover:border-sky-600 dark:hover:border-yellow-400/40 bg-zinc-200 dark:bg-zinc-850 border border-zinc-400 text-black dark:text-slate-50 dark:border-zinc-600 outline-none py-2.5 pl-14 pr-6 w-full"/>
 
         {text.length > 0 &&
             <button

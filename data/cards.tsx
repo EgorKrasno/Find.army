@@ -15,8 +15,9 @@ import {MdFamilyRestroom} from "react-icons/md";
 import {RiComputerLine, RiCustomerService2Fill} from "react-icons/ri";
 import {IoFitness} from "react-icons/io5";
 import {GrCertificate} from "react-icons/gr";
+import React from "react";
 
-export const exploreData = [
+export const cards = [
   {
     id: '1',
     title: 'Email 365',
@@ -402,7 +403,7 @@ export const exploreData = [
   {
     id: '200',
     title: 'Leave Form (DA-31)',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
+    icon: <FaFilePdf className='dark:text-blue-400 text-rose-700' size={96}/>,
     nipr: true,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN33078-DA_FORM_31-006-EFILE-5.pdf',
     description: 'Request and Authority for Leave (DA-31)',
@@ -411,7 +412,7 @@ export const exploreData = [
   {
     id: '201',
     title: 'Counseling Form',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
+    icon: <FaFilePdf className='dark:text-blue-400 text-rose-700' size={96}/>,
     nipr: true,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/pdf/A4856.pdf',
     description: 'Developmental Counseling Form (DA-4856)',
@@ -420,7 +421,7 @@ export const exploreData = [
   {
     id: '202',
     title: 'Personnel Action Form',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
+    icon: <FaFilePdf className='dark:text-blue-400 text-rose-700' size={96}/>,
     nipr: true,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN31947-DA_FORM_4187-002-EFILE-3.pdf',
     description: 'Personnel Action Form (DA-4187)',
@@ -429,7 +430,7 @@ export const exploreData = [
   {
     id: '203',
     title: 'Hand Receipt',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
+    icon: <FaFilePdf className='dark:text-blue-400 text-rose-700' size={96}/>,
     nipr: true,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/pdf/ARN18064_A2062_FINAL.pdf',
     description: 'Hand Receipt (DA-2062)',
@@ -438,7 +439,7 @@ export const exploreData = [
   {
     id: '204',
     title: 'Recommendation for Award Form',
-    icon: <FaFilePdf className='dark:text-purple-400 text-rose-700' size={96}/>,
+    icon: <FaFilePdf className='dark:text-blue-400 text-rose-700' size={96}/>,
     nipr: true,
     href: 'https://armypubs.army.mil/pub/eforms/DR_a/ARN32485-DA_FORM_638-003-EFILE-4.pdf',
     description: 'Recommendation for Award (DA-638)',
