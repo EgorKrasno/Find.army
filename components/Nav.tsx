@@ -69,10 +69,16 @@ const Nav = ({openModal}: Props) => {
               <a
                 href='https://github.com/EgorKrasno/Find.army'
                 target="_blank">
-                <button
-                  className='rounded-sm p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none'>
-                  <FaGithub size={24}/>
-                </button>
+                <div className='relative'>
+                  <div className='absolute flex items-center -top-10 left-1/2 -translate-x-1/2 dark:bg-zinc-850 bg-zinc-200 py-1 px-1.5 border border-1 dark:border-zinc-700 border-zinc-400 rounded-full space-x-1.5'>
+                    <div className='bg-rose-600 py-0.5 px-1.5 text-xs dark:text-zinc-900 text-zinc-50 rounded-full'>New</div>
+                    <span className='text-sm whitespace-nowrap dark:text-zinc-300 text-zinc-700'>Open Source</span>
+                  </div>
+                  <button
+                    className='rounded-sm p-2 ease-in-out cursor-pointer border border-zinc-400 dark:border-zinc-700 shadow dark:shadow-none'>
+                    <FaGithub size={24}/>
+                  </button>
+                </div>
               </a>
             </div>
           </div>

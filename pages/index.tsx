@@ -18,9 +18,9 @@ import FeedbackButton from "../components/FeedbackButton";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import FeedbackModal from "../components/FeedbackModal";
-import {exploreData} from "../data/cards";
+import {cards} from "../data/cards";
 
-const fuse = new Fuse(exploreData, {
+const fuse = new Fuse(cards, {
   keys: ['title', 'tags', 'description'],
   threshold: 0.3,
 });
@@ -43,20 +43,20 @@ const Home = () => {
 
     useEffect(() => {
       if (!localStorage.getItem('blocks')) {
-        setBlocks(exploreData)
+        setBlocks(cards)
       } else {
         const order = JSON.parse(localStorage.getItem('blocks')!);
 
         let oldBlocks = [];
         for (const id of order) {
-          const block = exploreData.find(item => item.id === id);
+          const block = cards.find(item => item.id === id);
           if (block) oldBlocks.push(block);
         }
 
         // Detect if explore data has new blocks
         let newBlocks: Item[] = [];
-        if (order.length !== exploreData.length) {
-          for (const block of exploreData) {
+        if (order.length !== cards.length) {
+          for (const block of cards) {
             if (!order.includes(block.id)) {
               newBlocks.push(block);
             }

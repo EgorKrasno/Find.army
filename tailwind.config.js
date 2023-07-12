@@ -2,6 +2,7 @@ module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
+        "./data/**/*.{js,ts,jsx,tsx}",
     ],
     darkMode: 'class',
     theme: {
@@ -16,6 +17,11 @@ module.exports = {
             screens: {
                 'wide': '1920px',
             },
+            colors: {
+                zinc: {
+                    850: '#212126'
+                }
+            }
         },
     },
     plugins: [],

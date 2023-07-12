@@ -55,7 +55,7 @@ const LinkBlock = ({item, text, isDragging, attributes, listeners, isOverlay}: P
                 `}>
               <div
                 className={`${isDragging ? 'shadow-2xl dark:shadow-yellow-400/50 shadow-zinc-900/80' : 'shadow-md dark:shadow-none'} block w-full h-full bg-cover bg-center dark:border-zinc-700 border border-zinc-400 transition-all duration-300 ease-in-out
-                  rounded-sm bg-no-repeat bg-zinc-200 dark:bg-zinc-800 flex justify-center items-center`}>
+                  rounded-sm bg-no-repeat bg-zinc-200 dark:bg-zinc-850 flex justify-center items-center`}>
                 {item.icon}
               </div>
               <button
