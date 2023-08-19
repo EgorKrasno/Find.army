@@ -118,25 +118,25 @@ const FeedbackModal = ({isOpen, closeModal}: Props) => {
                 <button
                   onClick={() => setSelectedRating(4)}
                   tabIndex={0}
-                  className={`${selectedRating === 4 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  className={`${selectedRating === 4 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700 dark:border-zinc-700 border-zinc-400'} w-[34px] h-[34px] transition duration-300 ease-in-out border text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
                   <Image  src='/image/emoji/emoji_1.webp' alt='Very satisfied reaction' width={24} height={24}/>
                 </button>
                 <button
                   onClick={() => setSelectedRating(3)}
                   tabIndex={0}
-                  className={`${selectedRating === 3 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  className={`${selectedRating === 3 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700 dark:border-zinc-700 border-zinc-400'} w-[34px] h-[34px] transition duration-300 ease-in-out border text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
                   <Image src='/image/emoji/emoji_2.webp' alt='satisfied reaction' width={24} height={24}/>
                 </button>
                 <button
                   onClick={() => setSelectedRating(2)}
                   tabIndex={0}
-                  className={`${selectedRating === 2 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  className={`${selectedRating === 2 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700 dark:border-zinc-700 border-zinc-400'} w-[34px] h-[34px] transition duration-300 ease-in-out border text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
                   <Image src='/image/emoji/emoji_3.webp' alt='ok reaction' width={24} height={24}/>
                 </button>
                 <button
                   onClick={() => setSelectedRating(1)}
                   tabIndex={0}
-                  className={`${selectedRating === 1 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700'} w-[34px] h-[34px] transition duration-300 ease-in-out border dark:border-zinc-700 border-zinc-400 text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
+                  className={`${selectedRating === 1 ? 'dark:border-yellow-400 border-zinc-900 dark:shadow-none shadow-lg shadow-zinc-900/40' : 'dark:hover:border-zinc-500 hover:border-zinc-700 dark:border-zinc-700 border-zinc-400'} w-[34px] h-[34px] transition duration-300 ease-in-out border text-2xl rounded-full flex justify-center items-center cursor-pointer`}>
                   <Image src='/image/emoji/emoji_4.webp' alt='not satisfied reaction' width={24} height={24}/>
                 </button>
 
