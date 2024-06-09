@@ -1,6 +1,6 @@
-import { Html, Head, NextScript, Main } from "next/document";
+import {Html, Head, NextScript, Main} from "next/document";
 
-const themeInitializerScript = `
+const themeInitializerScript =`
        (function () {
          const htmlElement = document.documentElement;
          if(window.localStorage.getItem("mainTheme")){
@@ -23,12 +23,14 @@ const themeInitializerScript = `
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
+      <Head/>
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeInitializerScript }} />
-        <Main />
-        <NextScript />
+      <script
+        dangerouslySetInnerHTML={{__html: themeInitializerScript}}
+      />
+      <Main/>
+      <NextScript/>
       </body>
     </Html>
-  );
+  )
 }
