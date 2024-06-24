@@ -32,18 +32,12 @@ export function FeedbackButton() {
   const [error, _setError] = useState<string | undefined>();
 
   async function handleSubmit() {
-    console.log({
-      email,
-      feedback,
-      rating,
-    });
-
     setEmail('');
     setFeedback('');
     setRating(undefined);
 
     await postFeedback({
-      email,
+      email: email || undefined,
       feedback,
       rating,
     });

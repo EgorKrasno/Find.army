@@ -29,9 +29,9 @@ export const CardsContextProvider = ({
       const parsedCards: {
         [key: string]: number;
       } = JSON.parse(savedCards);
-      const orderedCards = originalCards.sort(
-        (a, b) => parsedCards[a.id] - parsedCards[b.id],
-      );
+      const orderedCards = originalCards
+        .slice(0)
+        .sort((a, b) => parsedCards[a.id] - parsedCards[b.id]);
       setCards(orderedCards);
     } else {
       setCards(originalCards);

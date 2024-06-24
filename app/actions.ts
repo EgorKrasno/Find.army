@@ -8,13 +8,13 @@ const EMAIL = process.env.email;
 const HOST = process.env.host;
 
 const FeedbackSchema = z.object({
-  email: z
-    .string()
-    .email()
-    .optional()
-    .refine(async email => email && email.length > 1),
+  email: z.string().email().optional().or(z.literal('')),
   feedback: z.string().min(1).max(5000),
-  rating: z.nativeEnum(Rating).optional(),
+  rating: z
+    .string()
+    .optional()
+    .nullish()
+    .or(z.enum([Rating.One, Rating.Two, Rating.Three, Rating.Four])),
 });
 
 export async function postFeedback(formData: z.infer<typeof FeedbackSchema>) {
