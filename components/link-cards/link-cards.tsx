@@ -1,0 +1,111 @@
+'use client';
+
+import { LinkCardData } from '@/data/cards';
+import {
+  DndContext,
+  DragOverlay,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  closestCenter,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  SortableContext,
+  arrayMove,
+  rectSortingStrategy,
+  sortableKeyboardCoordinates,
+} from '@dnd-kit/sortable';
+import { AnimatePresence, motion } from 'framer-motion';
+import Fuse from 'fuse.js';
+import { useState } from 'react';
+import { Filters } from '../filters/filters';
+import { useCards } from '../hooks/use-blocks';
+import { DraggableLinkCard } from '../link-card/draggable-link-card';
+import { LinkCard } from '../link-card/link-card';
+
+export function LinkCards() {
+  const { cards, setCards } = useCards();
+  const fuse = new Fuse(cards, {
+    keys: ['title', 'tags', 'description'],
+    threshold: 0.3,
+  });
+
+  const [text, setText] = useState('');
+  const [activeCard, setActiveCard] = useState<LinkCardData>();
+
+  const sensors = useSensors(
+    useSensor(MouseSensor),
+    useSensor(TouchSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
+
+  const handleDragStart = (event: any) => {
+    setActiveCard(cards.find(item => item.id === event.active.id)!);
+  };
+
+  const handleDragEnd = (event: any) => {
+    const { active, over } = event;
+
+    if (active.id !== over.id) {
+      setCards(items => {
+        const oldIndex = items.indexOf(
+          items.find(item => item.id === active.id)!,
+        );
+        const newIndex = items.indexOf(
+          items.find(item => item.id === over.id)!,
+        );
+
+        const reorderedItems = arrayMove(items, oldIndex, newIndex);
+        return reorderedItems;
+      });
+    }
+  };
+
+  const results = fuse.search(text);
+  const searchFilteredData =
+    text.length > 0 ? results.map(result => result.item) : cards;
+
+  return (
+    <div className="flex flex-col gap-14">
+      <Filters text={text} setText={setText} />
+      <div className="grid h-full w-full auto-rows-min grid-cols-1 gap-7 pb-10 sm:grid-cols-2 lg:grid-cols-3">
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+          onDragStart={handleDragStart}>
+          <AnimatePresence>
+            <SortableContext items={cards} strategy={rectSortingStrategy}>
+              {searchFilteredData.map((card, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  className="h-full"
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      duration: 0.2,
+                    },
+                  }}>
+                  <DraggableLinkCard
+                    cardData={card}
+                    isFiltering={text.length > 0}
+                  />
+                </motion.div>
+              ))}
+            </SortableContext>
+          </AnimatePresence>
+          <DragOverlay>
+            {activeCard ? <LinkCard cardData={activeCard} /> : null}
+          </DragOverlay>
+        </DndContext>
+      </div>
+    </div>
+  );
+}
