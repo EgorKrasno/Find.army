@@ -24,7 +24,7 @@ export default function RootLayout({
             <CardsContextProvider>
               <Nav />
               <div
-                className="mx-auto flex h-full max-w-screen-lg px-6 py-10 lg:px-0"
+                className="mx-auto flex max-w-screen-lg px-6 py-10 lg:px-0"
                 vaul-drawer-wrapper="">
                 {children}
               </div>

@@ -66,7 +66,7 @@ export function Filters({ text, setText }: FiltersProps) {
           duration: 0.2,
         }}
         className={cn(
-          'fixed inset-x-0 top-10 z-[5000] mx-auto flex w-full max-w-[500px] items-center justify-center space-x-4 rounded-lg border bg-background/20 px-2 py-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] backdrop-blur-xl',
+          'fixed inset-x-0 bottom-0 top-auto z-[5000] mx-auto flex w-full max-w-[500px] items-center justify-center space-x-4 rounded-t-lg border bg-background/20 px-2 py-6 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] backdrop-blur-xl sm:bottom-auto sm:top-10 sm:rounded-lg sm:py-2',
         )}>
         <AnimatePresence>
           <FilterFields text={text} setText={setText} />
