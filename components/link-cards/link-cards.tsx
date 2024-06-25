@@ -82,7 +82,7 @@ export function LinkCards() {
   return (
     <div className="flex flex-col gap-14">
       <Filters text={text} setText={setText} />
-      <div className="grid h-full w-full auto-rows-min grid-cols-1 gap-7 pb-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid h-full w-full auto-rows-max grid-cols-1 gap-7 pb-10 sm:grid-cols-2 lg:grid-cols-3">
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
