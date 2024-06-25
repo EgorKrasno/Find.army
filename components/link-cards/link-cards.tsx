@@ -51,17 +51,13 @@ export function LinkCards() {
     const { active, over } = event;
 
     if (active.id !== over.id) {
-      setCards(items => {
-        const oldIndex = items.indexOf(
-          items.find(item => item.id === active.id)!,
-        );
-        const newIndex = items.indexOf(
-          items.find(item => item.id === over.id)!,
-        );
+      const activeIndex = cards.indexOf(
+        cards.find(item => item.id === active.id)!,
+      );
+      const overIndex = cards.indexOf(cards.find(item => item.id === over.id)!);
 
-        const reorderedItems = arrayMove(items, oldIndex, newIndex);
-        return reorderedItems;
-      });
+      const reorderedCards = arrayMove(cards, activeIndex, overIndex);
+      setCards(reorderedCards);
     }
   };
 

@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 
 interface CardsContextValue {
   cards: LinkCardData[];
-  setCards: React.Dispatch<React.SetStateAction<LinkCardData[]>>;
+  setCards: (newCards: LinkCardData[]) => void;
   resetCardsOrder: () => void;
 }
 
@@ -20,29 +20,16 @@ export const CardsContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [cards, setCards] = useState<LinkCardData[]>([]);
+  const [cards, _setCards] = useState<LinkCardData[]>(originalCards);
   const resetCardsOrder = () => setCards(originalCards);
 
-  useEffect(() => {
-    const savedCards = localStorage.getItem('cards');
-    if (savedCards) {
-      const parsedCards: {
-        [key: string]: number;
-      } = JSON.parse(savedCards);
-      const orderedCards = originalCards
-        .slice(0)
-        .sort((a, b) => parsedCards[a.id] - parsedCards[b.id]);
-      setCards(orderedCards);
-    } else {
-      setCards(originalCards);
-    }
-  }, []);
+  const setCards = (newCards: LinkCardData[]) => {
+    _setCards(newCards);
 
-  useEffect(() => {
     localStorage.setItem(
       'cards',
       JSON.stringify(
-        cards.reduce(
+        newCards.reduce(
           (acc, card, index) => {
             acc[card.id] = index;
             return acc;
@@ -51,7 +38,24 @@ export const CardsContextProvider = ({
         ),
       ),
     );
-  }, [cards]);
+  };
+
+  useEffect(() => {
+    const savedCardsOrder = localStorage.getItem('cards');
+
+    if (savedCardsOrder) {
+      const parsedCards: {
+        [key: string]: number;
+      } = JSON.parse(savedCardsOrder);
+      const orderedCards = Array.from(originalCards).sort(
+        (a, b) => parsedCards[a.id] - parsedCards[b.id],
+      );
+      _setCards(orderedCards);
+      console.log('Set Ordered Cards', orderedCards);
+    }
+  }, []);
+
+  useEffect(() => {}, [cards]);
 
   return (
     <CardsContext.Provider
