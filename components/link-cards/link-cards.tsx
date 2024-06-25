@@ -19,11 +19,25 @@ import {
 } from '@dnd-kit/sortable';
 import { AnimatePresence, motion } from 'framer-motion';
 import Fuse from 'fuse.js';
+import { GhostIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Filters } from '../filters/filters';
 import { useCards } from '../hooks/use-blocks';
 import { DraggableLinkCard } from '../link-card/draggable-link-card';
 import { LinkCard } from '../link-card/link-card';
+import { FeedbackButton } from '../nav/feedback-button';
+
+const appearAnimations = {
+  initial: { opacity: 0, scale: 0.97 },
+  exit: { opacity: 0, scale: 0.97 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
 
 export function LinkCards() {
   const { cards, setCards } = useCards();
@@ -76,25 +90,34 @@ export function LinkCards() {
           onDragStart={handleDragStart}>
           <AnimatePresence>
             <SortableContext items={cards} strategy={rectSortingStrategy}>
-              {searchFilteredData.map((card, index) => (
+              {searchFilteredData.length > 0 ? (
+                searchFilteredData.map((card, index) => (
+                  <motion.div
+                    key={index}
+                    className="h-full"
+                    {...appearAnimations}>
+                    <DraggableLinkCard
+                      cardData={card}
+                      isFiltering={text.length > 0}
+                    />
+                  </motion.div>
+                ))
+              ) : (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  className="h-full"
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    transition: {
-                      duration: 0.2,
-                    },
-                  }}>
-                  <DraggableLinkCard
-                    cardData={card}
-                    isFiltering={text.length > 0}
+                  {...appearAnimations}
+                  className="col-span-3 flex flex-col items-center gap-6 py-20">
+                  <GhostIcon
+                    className="h-32 w-32 text-foreground/70"
+                    strokeWidth={0.7}
                   />
+                  <span className="font-mono text-2xl tracking-tighter text-muted-foreground">
+                    No results found
+                  </span>
+                  <FeedbackButton variant="ghost" className="text-accent">
+                    Make a suggestion
+                  </FeedbackButton>
                 </motion.div>
-              ))}
+              )}
             </SortableContext>
           </AnimatePresence>
           <DragOverlay>

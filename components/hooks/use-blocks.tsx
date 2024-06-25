@@ -51,7 +51,6 @@ export const CardsContextProvider = ({
         (a, b) => parsedCards[a.id] - parsedCards[b.id],
       );
       _setCards(orderedCards);
-      console.log('Set Ordered Cards', orderedCards);
     }
   }, []);
 

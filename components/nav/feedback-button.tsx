@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '../ui/button';
+import { Button, ButtonProps } from '../ui/button';
 
 import { postFeedback } from '@/app/actions';
 import {
@@ -25,7 +25,14 @@ export enum Rating {
   Four = '😡',
 }
 
-export function FeedbackButton() {
+type FeedbackButtonProps = {
+  children?: React.ReactNode;
+} & ButtonProps;
+
+export function FeedbackButton({
+  children,
+  ...buttonProps
+}: FeedbackButtonProps) {
   const [email, setEmail] = useState<string>('');
   const [feedback, setFeedback] = useState<string>('');
   const [rating, setRating] = useState<Rating | undefined>();
@@ -46,7 +53,7 @@ export function FeedbackButton() {
   return (
     <Credenza>
       <CredenzaTrigger asChild>
-        <Button>Feedback</Button>
+        <Button {...buttonProps}>{children ? children : 'Feedback'}</Button>
       </CredenzaTrigger>
       <CredenzaContent>
         <CredenzaHeader>
