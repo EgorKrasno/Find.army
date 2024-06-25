@@ -4,15 +4,15 @@ import { useState } from 'react';
 import { Button, ButtonProps } from '../ui/button';
 
 import { postFeedback } from '@/app/actions';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CheckIcon, LoaderCircleIcon } from 'lucide-react';
 import {
   Credenza,
   CredenzaBody,
-  CredenzaClose,
   CredenzaContent,
   CredenzaFooter,
   CredenzaHeader,
   CredenzaTitle,
-  CredenzaTrigger,
 } from '../ui/credenza';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
@@ -27,34 +27,65 @@ export enum Rating {
 
 type FeedbackButtonProps = {
   children?: React.ReactNode;
+  onClick?: () => void;
 } & ButtonProps;
 
 export function FeedbackButton({
   children,
+  onClick,
   ...buttonProps
 }: FeedbackButtonProps) {
   const [email, setEmail] = useState<string>('');
   const [feedback, setFeedback] = useState<string>('');
   const [rating, setRating] = useState<Rating | undefined>();
-  const [error, _setError] = useState<string | undefined>();
+  const [error, setError] = useState<string | undefined>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const [sent, setSent] = useState<boolean>(false);
 
-  async function handleSubmit() {
-    setEmail('');
-    setFeedback('');
-    setRating(undefined);
+  function handleSubmit() {
+    setLoading(true);
 
-    await postFeedback({
+    postFeedback({
       email: email || undefined,
       feedback,
       rating,
-    });
+    })
+      .then(() => {
+        setError(undefined);
+        setSent(true);
+        setTimeout(() => {
+          setOpen(false);
+          setEmail('');
+          setFeedback('');
+          setRating(undefined);
+          setSent(false);
+        }, 2000);
+      })
+      .catch(_err => {
+        setError('Failed to submit feedback');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
-    <Credenza>
-      <CredenzaTrigger asChild>
-        <Button {...buttonProps}>{children ? children : 'Feedback'}</Button>
-      </CredenzaTrigger>
+    <Credenza
+      open={open}
+      onOpenChange={isOpen => {
+        !isOpen && setError(undefined);
+        setLoading(false);
+        setOpen(isOpen);
+      }}>
+      <Button
+        onClick={() => {
+          onClick && onClick();
+          setOpen(true);
+        }}
+        {...buttonProps}>
+        {children ? children : 'Feedback'}
+      </Button>
       <CredenzaContent>
         <CredenzaHeader>
           <CredenzaTitle>Feedback</CredenzaTitle>
@@ -90,16 +121,35 @@ export function FeedbackButton({
               {Rating.Four}
             </ToggleGroupItem>
           </ToggleGroup>
-          <span className="text-destructive">{error}</span>
+          <span className="block text-center text-destructive sm:text-left">
+            {error}
+          </span>
         </CredenzaBody>
         <CredenzaFooter>
-          <CredenzaClose asChild>
-            <Button
-              disabled={!feedback || feedback.length < 1}
-              onClick={() => handleSubmit()}>
-              Submit
-            </Button>
-          </CredenzaClose>
+          <Button
+            className="relative flex items-center"
+            disabled={!feedback || feedback.length < 1 || loading || sent}
+            onClick={() => handleSubmit()}>
+            <AnimatePresence>
+              {loading && (
+                <motion.span
+                  transition={{ duration: 0.15 }}
+                  initial={{ opacity: 0, width: 0, scale: 0.4 }}
+                  animate={{ opacity: 100, width: 'auto', scale: 1 }}
+                  exit={{ opacity: 0, width: 0, scale: 0.4 }}>
+                  <LoaderCircleIcon className="mr-2 animate-spin" />
+                </motion.span>
+              )}
+            </AnimatePresence>
+            {sent ? (
+              <>
+                <CheckIcon className="mr-2" />
+                Sent
+              </>
+            ) : (
+              'Submit'
+            )}
+          </Button>
         </CredenzaFooter>
       </CredenzaContent>
     </Credenza>

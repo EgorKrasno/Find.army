@@ -1,6 +1,7 @@
 'use server';
 import { Rating } from '@/components/nav/feedback-button';
 import { createTransport } from 'nodemailer';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { z } from 'zod';
 
 const PASSWORD = process.env.password;
@@ -42,14 +43,16 @@ export async function postFeedback(formData: z.infer<typeof FeedbackSchema>) {
   };
 
   return new Promise<void>((resolve, reject) => {
-    transporter.sendMail(mailData, function (err: any, info: any) {
-      if (err) {
-        console.log(err);
-        reject(err);
-      } else {
-        console.log('Email sent: ' + info.response);
-        resolve();
-      }
-    });
+    transporter.sendMail(
+      mailData,
+      function (err: Error | null, info: SMTPTransport.SentMessageInfo) {
+        if (err) {
+          reject(err);
+        } else {
+          console.log('Email sent: ' + info.response);
+          resolve();
+        }
+      },
+    );
   });
 }
