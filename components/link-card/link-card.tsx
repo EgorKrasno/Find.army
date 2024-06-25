@@ -60,6 +60,12 @@ const LinkCard = forwardRef(function LinkCard(
   return (
     <Card
       ref={ref}
+      onClick={() => {
+        const win = window.open(cardData.href, '_blank');
+        if (win != null) {
+          win.focus();
+        }
+      }}
       className="group relative z-0 flex h-full min-h-fit cursor-pointer ring-2 ring-accent/0 ring-offset-0 ring-offset-background duration-150 hover:ring-accent hover:ring-offset-4 sm:min-h-[250px]">
       <CardContent className="relative flex w-full flex-col justify-between overflow-hidden py-10">
         <Topography className="absolute -left-10 -top-5 -z-10 w-[calc(100%+calc(theme(spacing.10)*2))] text-accent opacity-20 transition-all duration-100 group-hover:opacity-80 dark:opacity-10 dark:group-hover:opacity-50" />
@@ -68,7 +74,10 @@ const LinkCard = forwardRef(function LinkCard(
         <div className="absolute right-7 top-3 flex items-center gap-4">
           <Button
             variant="outline"
-            onClick={() => copyToClipboard(cardData.href)}
+            onClick={e => {
+              e.stopPropagation();
+              copyToClipboard(cardData.href);
+            }}
             className="translate-x-4 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
             <AnimatePresence mode="wait">
               {copiedHref.length > 0 && copiedHref === cardData.href ? (
@@ -93,7 +102,7 @@ const LinkCard = forwardRef(function LinkCard(
             aria-label="Drag to reorder"
             size="icon"
             variant="ghost"
-            className={cn('h-10 w-10 cursor-move')}
+            className="h-10 w-10 cursor-move"
             {...attributes}
             {...listeners}
             disabled={isFiltering}>
