@@ -25,6 +25,17 @@ export function Nav() {
         </div>
         <div className="flex items-center gap-4">
           <FeedbackButton />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="flex sm:hidden"
+            asChild>
+            <Link
+              target="_blank"
+              href="https://github.com/EgorKrasno/Find.army">
+              <GithubIcon />
+            </Link>
+          </Button>
           <ThemeToggle />
           <Button
             variant="outline"
