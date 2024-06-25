@@ -62,7 +62,7 @@ const LinkCard = forwardRef(function LinkCard(
       ref={ref}
       className="group relative z-0 flex h-full min-h-fit cursor-pointer ring-2 ring-accent/0 ring-offset-0 ring-offset-background duration-150 hover:ring-accent hover:ring-offset-4 sm:min-h-[250px]">
       <CardContent className="relative flex w-full flex-col justify-between overflow-hidden py-10">
-        <Topography className="absolute -left-10 -top-5 -z-10 h-[calc(100%+theme(spacing.10))] w-[calc(100%+calc(theme(spacing.10)*2))] text-accent opacity-20 transition-all duration-100 group-hover:opacity-80 dark:opacity-10 dark:group-hover:opacity-50" />
+        <Topography className="absolute -left-10 -top-5 -z-10 w-[calc(100%+calc(theme(spacing.10)*2))] text-accent opacity-20 transition-all duration-100 group-hover:opacity-80 dark:opacity-10 dark:group-hover:opacity-50" />
         <div className="absolute bottom-0 left-0 -z-10 h-full w-full bg-gradient-to-t from-card via-card/80 to-card/0" />
         <Icon />
         <div className="absolute right-7 top-3 flex items-center gap-4">

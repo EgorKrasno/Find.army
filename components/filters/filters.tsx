@@ -131,7 +131,7 @@ const FilterFields = ({
                 </CredenzaDescription>
               </CredenzaHeader>
               <CredenzaBody>
-                <span className="text-destructive">
+                <span className="block w-full text-center text-destructive md:text-left">
                   This action can not be undone.
                 </span>
               </CredenzaBody>
