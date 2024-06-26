@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, ButtonProps } from '../ui/button';
 
 import { postFeedback } from '@/app/actions';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckIcon, LoaderCircleIcon } from 'lucide-react';
+import { z } from 'zod';
 import {
   Credenza,
   CredenzaBody,
@@ -40,6 +41,7 @@ export function FeedbackButton({
   const [rating, setRating] = useState<Rating | undefined>();
   const [error, setError] = useState<string | undefined>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
   const [sent, setSent] = useState<boolean>(false);
 
@@ -69,6 +71,23 @@ export function FeedbackButton({
         setLoading(false);
       });
   }
+
+  useEffect(() => {
+    const check = z
+      .string()
+      .email()
+      .optional()
+      .or(z.literal(''))
+      .safeParse(email || '');
+
+    if (!check.success) {
+      setError(check.error.errors[0].message);
+      setDisabled(true);
+    } else {
+      setError(undefined);
+      setDisabled(false);
+    }
+  }, [email]);
 
   return (
     <Credenza
@@ -128,7 +147,9 @@ export function FeedbackButton({
         <CredenzaFooter>
           <Button
             className="relative flex items-center"
-            disabled={!feedback || feedback.length < 1 || loading || sent}
+            disabled={
+              !feedback || feedback.length < 1 || loading || sent || disabled
+            }
             onClick={() => handleSubmit()}>
             <AnimatePresence>
               {loading && (
