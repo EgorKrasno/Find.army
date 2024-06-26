@@ -97,6 +97,7 @@ export function LinkCards() {
                     className="h-full"
                     {...appearAnimations}>
                     <DraggableLinkCard
+                      cardPosition={index}
                       cardData={card}
                       isFiltering={text.length > 0}
                     />

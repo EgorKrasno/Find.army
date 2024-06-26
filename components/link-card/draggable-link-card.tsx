@@ -1,19 +1,11 @@
-import { LinkCard } from './link-card';
+import { LinkCard, LinkCardProps } from './link-card';
 
-import { LinkCardData } from '@/data/cards';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-export function DraggableLinkCard({
-  cardData,
-  isFiltering,
-}: {
-  cardData: LinkCardData;
-  isFiltering?: boolean;
-  disableBackground?: boolean;
-}) {
+export function DraggableLinkCard(props: LinkCardProps) {
   const { setNodeRef, transform, transition, isDragging } = useSortable({
-    id: cardData.id,
+    id: props.cardData.id,
   });
 
   return (
@@ -24,11 +16,7 @@ export function DraggableLinkCard({
         transform: CSS.Translate.toString(transform),
         transition,
       }}>
-      <LinkCard
-        cardData={cardData}
-        isFiltering={isFiltering}
-        isDragging={isDragging}
-      />
+      <LinkCard ref={setNodeRef} {...props} isDragging={isDragging} />
     </div>
   );
 }
