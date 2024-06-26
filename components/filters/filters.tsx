@@ -72,7 +72,7 @@ export function Filters({ text, setText }: FiltersProps) {
           <FilterFields text={text} setText={setText} />
         </AnimatePresence>
       </motion.div>
-      <FilterFields text={text} setText={setText} />
+      <FilterFields text={text} setText={setText} focus />
     </>
   );
 }
@@ -80,9 +80,11 @@ export function Filters({ text, setText }: FiltersProps) {
 const FilterFields = ({
   text,
   setText,
+  focus,
 }: {
   text: string;
   setText: (text: string) => void;
+  focus?: boolean;
 }) => {
   const { resetCardsOrder } = useCards();
   return (
@@ -95,6 +97,7 @@ const FilterFields = ({
         }}
         className="grow border-none bg-muted outline-none ring-0"
         value={text}
+        autoFocus={focus}
         startIcon={<SearchIcon className="h-4" />}
         endIcon={
           <Button
