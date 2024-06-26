@@ -112,6 +112,7 @@ const LinkCard = forwardRef<HTMLDivElement, LinkCardProps>(function LinkCard(
       }}
       onKeyDown={e => {
         if (e.key === 'Enter') {
+          e.preventDefault();
           openLink();
         }
       }}
@@ -125,6 +126,13 @@ const LinkCard = forwardRef<HTMLDivElement, LinkCardProps>(function LinkCard(
         <div className="absolute right-7 top-3 flex items-center gap-4">
           <Button
             variant="outline"
+            onKeyDown={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                e.stopPropagation();
+                copyToClipboard(cardData.href);
+              }
+            }}
             onClick={e => {
               e.stopPropagation();
               copyToClipboard(cardData.href);
@@ -143,6 +151,13 @@ const LinkCard = forwardRef<HTMLDivElement, LinkCardProps>(function LinkCard(
                 <motion.span
                   key="copy"
                   {...animations}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      copyToClipboard(cardData.href);
+                    }
+                  }}
                   className="flex items-center gap-2">
                   Copy Link
                 </motion.span>
@@ -156,6 +171,13 @@ const LinkCard = forwardRef<HTMLDivElement, LinkCardProps>(function LinkCard(
             className="h-10 w-10 cursor-move"
             {...attributes}
             {...listeners}
+            onKeyDown={e => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+              listeners && listeners.onKeyDown(e);
+            }}
             disabled={isFiltering}>
             <GripHorizontalIcon />
           </Button>
