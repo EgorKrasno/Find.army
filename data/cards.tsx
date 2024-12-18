@@ -664,7 +664,7 @@ export const cards: LinkCardData[] = [
     ),
     cac: true,
     avd: false,
-    href: 'https://move.mil/',
+    href: 'https://my.move.mil/sign-in',
     description: 'Defense Travel System',
     type: CardType.LINK,
     tags: [
