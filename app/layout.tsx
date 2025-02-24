@@ -5,6 +5,7 @@ import { Nav } from '@/components/nav/nav';
 import { ThemeProvider } from '@/components/theme-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Metadata } from 'next';
+import { Analytics } from "@vercel/analytics/react"
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -20,12 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Analytics />
       <body className="h-screen w-screen overflow-y-auto overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="system">
           <TooltipProvider delayDuration={150}>
             <CardsContextProvider>
               <Nav />
-              <Announcement />
               <div
                 className="mx-auto flex max-w-screen-lg px-6 py-10 lg:px-0"
                 vaul-drawer-wrapper="">
